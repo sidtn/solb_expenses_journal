@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from journal_api.models import Category, Expense
 
 
@@ -14,4 +15,3 @@ class ExpenseAdmin(admin.ModelAdmin):
     list_display = ["category", "amount", "owner", "created_at"]
     ordering = ["category", "amount", "created_at"]
     search_fields = ["category", "owner"]
-

@@ -9,14 +9,18 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(
-            username=validated_data['username'],
-            password=validated_data['password'],
+            username=validated_data["username"],
+            password=validated_data["password"],
         )
         return user
 
     class Meta:
         model = User
-        fields = ("id", "username", "password",)
+        fields = (
+            "id",
+            "username",
+            "password",
+        )
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -34,4 +38,11 @@ class ExpenseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Expense
-        fields = "__all__"
+        fields = (
+            "id",
+            "amount",
+            "created_at",
+            "category",
+            "short_description",
+            "owner",
+        )

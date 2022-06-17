@@ -5,10 +5,13 @@ from journal_api.core.validators import validate_positive
 
 
 class Category(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories")
-    name = models.CharField(max_length=100, verbose_name="Expense category", unique=True)
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories"
+    )
+    name = models.CharField(max_length=100, verbose_name="Expense category")
 
     class Meta:
+        unique_together = ("owner", "name")
         verbose_name_plural = "Categories"
 
     def __str__(self):
@@ -17,9 +20,13 @@ class Category(models.Model):
 
 class Expense(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expenses")
-    amount = models.DecimalField(max_digits=10, decimal_places=2, validators=[validate_positive])
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, validators=[validate_positive]
+    )
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
-    short_description = models.CharField(max_length=255, verbose_name="Short description", blank=True)
+    short_description = models.CharField(
+        max_length=255, verbose_name="Short description", blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
