@@ -1,0 +1,346 @@
+[
+    {
+        "fields": {
+            "name": "Water bill",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "name": "Trash service",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "name": "Gas bill",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "name": "Transportation costs",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "name": "Auto maintenance",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "name": "Car registration",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "name": "Car insurance",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "name": "Home maintenance",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 8
+    },
+    {
+        "fields": {
+            "name": "Renter/home insurance",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "name": "Health care",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 10
+    },
+    {
+        "fields": {
+            "name": "Clothing",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 11
+    },
+    {
+        "fields": {
+            "name": "Gifts",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 12
+    },
+    {
+        "fields": {
+            "name": "Charitable giving",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 13
+    },
+    {
+        "fields": {
+            "name": "Computer/phone replacement",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 14
+    },
+    {
+        "fields": {
+            "name": "Software subscriptions",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 15
+    },
+    {
+        "fields": {
+            "name": "Entertainment subscriptions",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 16
+    },
+    {
+        "fields": {
+            "name": "Vacation",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 17
+    },
+    {
+        "fields": {
+            "name": "Gym membership/fitness",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 18
+    },
+    {
+        "fields": {
+            "name": "Education",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 19
+    },
+    {
+        "fields": {
+            "name": "Gaming",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 20
+    },
+    {
+        "fields": {
+            "name": "Christmas",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 21
+    },
+    {
+        "fields": {
+            "name": "Other Holidays",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 22
+    },
+    {
+        "fields": {
+            "name": "Hosting",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 23
+    },
+    {
+        "fields": {
+            "name": "Dates",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 24
+    },
+    {
+        "fields": {
+            "name": "Beauty",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 25
+    },
+    {
+        "fields": {
+            "name": "Property taxes",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 26
+    },
+    {
+        "fields": {
+            "name": "Movies",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 27
+    },
+    {
+        "fields": {
+            "name": "Phone bill",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 28
+    },
+    {
+        "fields": {
+            "name": "Life insurance",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 29
+    },
+    {
+        "fields": {
+            "name": "Warehouse membership",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 30
+    },
+    {
+        "fields": {
+            "name": "Credit card fee",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 31
+    },
+    {
+        "fields": {
+            "name": "House decor",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 32
+    },
+    {
+        "fields": {
+            "name": "Banking",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 33
+    },
+    {
+        "fields": {
+            "name": "Household goods",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 34
+    },
+    {
+        "fields": {
+            "name": "Pet care",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 35
+    },
+    {
+        "fields": {
+            "name": "Child care",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 36
+    },
+    {
+        "fields": {
+            "name": "Kids’ Activities",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 37
+    },
+    {
+        "fields": {
+            "name": "Kids’ Sports",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 38
+    },
+    {
+        "fields": {
+            "name": "School fees",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 39
+    },
+    {
+        "fields": {
+            "name": "Braces",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 40
+    },
+    {
+        "fields": {
+            "name": "Weddings",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 41
+    },
+    {
+        "fields": {
+            "name": "Taxes",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 42
+    },
+    {
+        "fields": {
+            "name": "Lawn care",
+            "owner": null
+        },
+        "model": "journal_api.category",
+        "pk": 43
+    }
+]
