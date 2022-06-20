@@ -39,5 +39,5 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
             return Expense.objects.all()
         elif self.request.user.is_authenticated:
             user = self.request.user
-            return Expense.objects.filter(Q(owner=user) | Q(owner=None))
-        return Expense.objects.filter(owner=None)
+            return Expense.objects.filter(owner=user)
+        return Expense.objects.all()
