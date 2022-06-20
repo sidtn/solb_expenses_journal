@@ -11,7 +11,6 @@ from journal_api.serializers import (CategorySerializer, ExpenseSerializer,
 
 
 class CreateUserView(CreateAPIView):
-    model = User
     permission_classes = [AllowAny]
     serializer_class = UserSerializer
 
@@ -22,7 +21,9 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_superuser:
+            return Category.objects.all()
+        elif self.request.user.is_authenticated:
             user = self.request.user
             return Category.objects.filter(Q(owner=user) | Q(owner=None))
         return Category.objects.filter(owner=None)
@@ -34,7 +35,9 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_superuser:
+            return Expense.objects.all()
+        elif self.request.user.is_authenticated:
             user = self.request.user
-            return Expense.objects.filter(Q(owner=user) | Q(owner=None))
-        return Expense.objects.filter(owner=None)
+            return Expense.objects.filter(owner=user)
+        return Expense.objects.all()

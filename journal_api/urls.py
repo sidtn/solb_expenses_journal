@@ -4,8 +4,8 @@ from rest_framework import routers
 from journal_api.views import CategoryAPIViewSet, ExpenseAPIViewSet
 
 router = routers.DefaultRouter()
-router.register(r"category", CategoryAPIViewSet)
-router.register(r"expense", ExpenseAPIViewSet)
+router.register(r"categories", CategoryAPIViewSet)
+router.register(r"expenses", ExpenseAPIViewSet)
 
 
 urlpatterns = [
