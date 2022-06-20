@@ -64,6 +64,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "solb_expenses_journal.wsgi.application"
 
+# user
+AUTH_USER_MODEL = "journal_api.User"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

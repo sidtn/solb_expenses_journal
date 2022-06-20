@@ -1,7 +1,17 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext as _
 
 from journal_api.core.validators import validate_positive
+
+
+class User(AbstractUser):
+    email = models.EmailField(_("email address"), blank=False, unique=True)
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return self.email
 
 
 class Category(models.Model):
