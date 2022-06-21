@@ -6,11 +6,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
 from journal_api.models import Category, Expense
-from journal_api.serializers import (
-    CategorySerializer,
-    ExpenseSerializer,
-    UserSerializer,
-)
+from journal_api.serializers import (CategorySerializer, ExpenseSerializer,
+                                     UserSerializer)
 
 
 class CreateUserView(CreateAPIView):
