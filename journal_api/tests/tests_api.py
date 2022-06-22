@@ -39,7 +39,7 @@ class CategoryTests(APITestCase):
     def test_get_categories_no_authenticated(self):
         url = reverse("category-list")
         response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_get_categories_authenticated(self):
         url = reverse("category-list")
@@ -62,7 +62,7 @@ class ExpenseTests(APITestCase):
     def test_get_expenses_no_authenticated(self):
         url = reverse("expense-list")
         response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_get_expenses_authenticated(self):
         url = reverse("expense-list")
@@ -79,11 +79,11 @@ class ExpenseTests(APITestCase):
         data = {
             "owner": user.pk,
             "amount": 10.25,
-            "category": 1,
+            "category": Category.objects.first().id,
             "short_description": "too much water",
         }
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["amount"], "10.25")
-        self.assertEqual(response.data["category"], 1)
+        self.assertEqual(response.data["category"], Category.objects.first().id)
         self.assertEqual(response.data["short_description"], "too much water")
