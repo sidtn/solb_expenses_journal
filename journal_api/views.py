@@ -1,6 +1,7 @@
 import datetime
+
 from django.db.models import Q, Sum
-from rest_framework import viewsets, status
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -8,8 +9,11 @@ from rest_framework.response import Response
 
 from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
 from journal_api.models import Category, Expense
-from journal_api.serializers import (CategorySerializer, ExpenseSerializer,
-                                     UserSerializer)
+from journal_api.serializers import (
+    CategorySerializer,
+    ExpenseSerializer,
+    UserSerializer,
+)
 
 
 class CreateUserView(CreateAPIView):
@@ -56,7 +60,7 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
             end_date = datetime.datetime.now()
         params_dict = {
             "owner__id": user.id,
-            "created_at__range": [start_date, end_date]
+            "created_at__range": [start_date, end_date],
         }
         if category:
             params_dict["category"] = category
@@ -68,6 +72,3 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
         return Response(
             {"total expenses": total_expenses["sum"]}, status=status.HTTP_200_OK
         )
-
-
-
