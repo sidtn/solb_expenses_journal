@@ -16,7 +16,12 @@ class User(AbstractUser):
 
 
 class Category(models.Model):
-    uuid = models.UUIDField(max_length=36, default=uuid.uuid4, unique=True, editable=False)
+    uuid = models.UUIDField(
+        max_length=36,
+        default=uuid.uuid4,
+        unique=True,
+        editable=False,
+    )
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories"
     )

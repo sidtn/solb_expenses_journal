@@ -1,3 +1,5 @@
+import time
+from datetime import datetime
 import random
 from multiprocessing.pool import ThreadPool
 
@@ -26,8 +28,6 @@ class AppLoader:
             with open("users.txt", "a+", encoding="utf-8") as file:
                 file.write(f"{username} - {email} - {password}\n")
             print(f"user {data} has been created")
-        else:
-            print("something is wrong")
 
     def get_headers(self):
         with open("users.txt", "r", encoding="utf-8") as file:
@@ -38,6 +38,7 @@ class AppLoader:
                 "email": email,
                 "password": password,
             }
+
             json_response = requests.post(self.TOKEN_URL, data=login_data).json()
             token = json_response.get("access")
             return {"Authorization": f"Bearer {token}"}
@@ -84,16 +85,21 @@ class AppLoader:
             print("get request to total expenses")
 
     def load(self):
-        while True:
-            self.create_user()
-            for _ in range(100):
-                self.add_expense()
-            for _ in range(5):
-                self.add_new_category()
-            for _ in range(10):
-                self.get_to_expenses()
-            for _ in range(10):
-                self.get_to_total_expenses()
+        try:
+            while True:
+                self.create_user()
+                for _ in range(100):
+                    self.add_expense()
+                for _ in range(5):
+                    self.add_new_category()
+                for _ in range(10):
+                    self.get_to_expenses()
+                for _ in range(10):
+                    self.get_to_total_expenses()
+        except requests.exceptions.RequestException:
+            print("no connection to server")
+            time.sleep(10)
+            self.load()
 
 
 if __name__ == "__main__":

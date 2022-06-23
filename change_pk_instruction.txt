@@ -1,5 +1,16 @@
+В модели Category добавляем поле uuid = models.UUIDField(max_length=36, default=uuid.uuid4, unique=True, editable=False).
+Создаем миграцию и правим ее следующим образом:
 
-1. Для начала создадим пустую миграцию и добавим пустой столбец uuid в таблицу category:
+def create_uuid(apps, schema_editor):
+    Category = apps.get_model("journal_api", "Category")
+    objs = [obj for obj in Category.objects.filter(uuid=None)]
+    with transaction.atomic():
+        for obj in objs:
+            obj.uuid = uuid.uuid4()
+        Category.objects.bulk_update(objs, ["uuid"])
+
+
+class Migration(migrations.Migration):
 
     dependencies = [
         ('journal_api', '0001_initial'),
@@ -7,62 +18,28 @@
 
     operations = [
         migrations.AddField(
-            model_name="category",
-            name="uuid",
-            field=models.UUIDField(default=None, editable=False, null=True),
+            model_name='category',
+            name='uuid',
+            field=models.UUIDField(editable=False, null=True),
         ),
+        migrations.RunPython(create_uuid, reverse_code=migrations.RunPython.noop),
+        migrations.AlterField(
+            model_name='category',
+            name='uuid',
+            field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+        )
     ]
 
 Миграция сформирует следующие запросы:
 BEGIN;
 CREATE TABLE "new__journal_api_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "uuid" char(32) NULL, "name" varchar(100) NOT NULL, "owner_id" bigint NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED);
-INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", '400f6ec669d945b793a239dcda93ab1c' FROM "journal_api_category";
+INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", NULL FROM "journal_api_category";
 DROP TABLE "journal_api_category";
 ALTER TABLE "new__journal_api_category" RENAME TO "journal_api_category";
 CREATE UNIQUE INDEX "journal_api_category_owner_id_name_6b5c9e89_uniq" ON "journal_api_category" ("owner_id", "name");
 CREATE INDEX "journal_api_category_owner_id_b0979b78" ON "journal_api_category" ("owner_id");
-COMMIT;
-
-После применения миграции таблица имеет следующий вид:
-0|id|INTEGER|1||1
-1|name|varchar(100)|1||0
-2|owner_id|bigint|0||0
-3|uuid|char(32)|0||0
-
-2. В модели Category добавляем поле uuid = models.UUIDField(max_length=36, default=uuid.uuid4, unique=True, editable=False)
-После перезагрузки сервера, новым категориям будет присваиваться uuid, а у существующих ранее uuid будет null
-
-3. Создаем еще одну пустую миграцию, и в ней прописываем логику заполнения null значений uuid,
-так же делаем поле уникальным на уровне базы данных.
-
-def create_uuid(apps, schema_editor):
-    Category = apps.get_model("journal_api", "Category")
-    objs = [obj for obj in Category.objects.filter(uuid=None)]
-    with transaction.atomic():
-        for obj in objs:
-            obj.uuid = uuid.uuid4().hex
-        Category.objects.bulk_update(objs, ["uuid"])
-
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('journal_api', '0002_add_uuid_to_category'),
-    ]
-
-    operations = [
-        migrations.RunPython(create_uuid, reverse_code=migrations.RunPython.noop),
-        migrations.AlterField(
-            model_name="category",
-            name="uuid",
-            field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True),
-        ),
-    ]
-
-Миграция сформирует следующие запросы:
-BEGIN;
-CREATE TABLE "new__journal_api_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "uuid" char(32) NOT NULL UNIQUE, "name" varchar(100) NOT NULL, "owner_id" bigint NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED);
-INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", coalesce("uuid", '7ee4fe3e5f2a4ee39bdfbe02404800fe') FROM "journal_api_category";
+CREATE TABLE "new__journal_api_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL, "owner_id" bigint NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED, "uuid" char(32) NOT NULL UNIQUE);
+INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", coalesce("uuid", '849d38f5632d45dba747dda497442a8d') FROM "journal_api_category";
 DROP TABLE "journal_api_category";
 ALTER TABLE "new__journal_api_category" RENAME TO "journal_api_category";
 CREATE UNIQUE INDEX "journal_api_category_owner_id_name_6b5c9e89_uniq" ON "journal_api_category" ("owner_id", "name");
