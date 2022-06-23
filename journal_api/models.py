@@ -28,6 +28,14 @@ class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name="Expense category")
     id = models.IntegerField(null=True)
 
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            last_id = self.objects.all().aggregate(largest=models.Max("id"))["largest"]
+            if last_id is not None:
+                self.id = last_id + 1
+
+        super(Category, self).save(*args, **kwargs)
+
     class Meta:
         unique_together = ("owner", "name")
         verbose_name_plural = "Categories"
