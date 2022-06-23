@@ -19,13 +19,14 @@ class Category(models.Model):
     uuid = models.UUIDField(
         max_length=36,
         default=uuid.uuid4,
-        unique=True,
+        primary_key=True,
         editable=False,
     )
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories"
     )
     name = models.CharField(max_length=100, verbose_name="Expense category")
+    id = models.IntegerField(null=True)
 
     class Meta:
         unique_together = ("owner", "name")
