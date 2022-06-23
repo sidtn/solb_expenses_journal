@@ -1,56 +1,21 @@
-В модели Category добавляем поле uuid = models.UUIDField(max_length=36, default=uuid.uuid4, unique=True, editable=False).
-Создаем миграцию и правим ее следующим образом:
+На этом этапе удаляем FK у таблицы category а поле category делаем IntegerField
+Миграция:
+    migrations.AlterField(
+        model_name='expense',
+        name='category',
+        field=models.IntegerField(),
+    ),
 
-def create_uuid(apps, schema_editor):
-    Category = apps.get_model("journal_api", "Category")
-    objs = [obj for obj in Category.objects.filter(uuid=None)]
-    with transaction.atomic():
-        for obj in objs:
-            obj.uuid = uuid.uuid4()
-        Category.objects.bulk_update(objs, ["uuid"])
+SQL requests:
 
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('journal_api', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.AddField(
-            model_name='category',
-            name='uuid',
-            field=models.UUIDField(editable=False, null=True),
-        ),
-        migrations.RunPython(create_uuid, reverse_code=migrations.RunPython.noop),
-        migrations.AlterField(
-            model_name='category',
-            name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-        )
-    ]
-
-Миграция сформирует следующие запросы:
 BEGIN;
-CREATE TABLE "new__journal_api_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "uuid" char(32) NULL, "name" varchar(100) NOT NULL, "owner_id" bigint NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED);
-INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", NULL FROM "journal_api_category";
-DROP TABLE "journal_api_category";
-ALTER TABLE "new__journal_api_category" RENAME TO "journal_api_category";
-CREATE UNIQUE INDEX "journal_api_category_owner_id_name_6b5c9e89_uniq" ON "journal_api_category" ("owner_id", "name");
-CREATE INDEX "journal_api_category_owner_id_b0979b78" ON "journal_api_category" ("owner_id");
-CREATE TABLE "new__journal_api_category" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL, "owner_id" bigint NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED, "uuid" char(32) NOT NULL UNIQUE);
-INSERT INTO "new__journal_api_category" ("id", "name", "owner_id", "uuid") SELECT "id", "name", "owner_id", coalesce("uuid", '849d38f5632d45dba747dda497442a8d') FROM "journal_api_category";
-DROP TABLE "journal_api_category";
-ALTER TABLE "new__journal_api_category" RENAME TO "journal_api_category";
-CREATE UNIQUE INDEX "journal_api_category_owner_id_name_6b5c9e89_uniq" ON "journal_api_category" ("owner_id", "name");
-CREATE INDEX "journal_api_category_owner_id_b0979b78" ON "journal_api_category" ("owner_id");
+CREATE TABLE "new__journal_api_expense" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "category" integer NOT NULL, "amount" decimal NOT NULL, "short_description" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "owner_id" bigint NOT NULL REFERENCES "journal_api_user" ("id") DEFERRABLE INITIALLY DEFERRED);
+INSERT INTO "new__journal_api_expense" ("id", "amount", "short_description", "created_at", "updated_at", "owner_id", "category") SELECT "id", "amount", "short_description", "created_at", "updated_at", "owner_id", "category_id" FROM "journal_api_expense";
+DROP TABLE "journal_api_expense";
+ALTER TABLE "new__journal_api_expense" RENAME TO "journal_api_expense";
+CREATE INDEX "journal_api_expense_owner_id_5914b08b" ON "journal_api_expense" ("owner_id");
 COMMIT;
 
-После применения миграции таблица имеет следующий вид:
-0|id|INTEGER|1||1
-1|name|varchar(100)|1||0
-2|owner_id|bigint|0||0
-3|uuid|char(32)|1||0
 
 
 
