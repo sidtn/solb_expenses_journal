@@ -6,3 +6,4 @@ __pycache__
 .env
 solb_expenses_journal/__pycache__
 db.sqlite3
+load_script/users.txt
