@@ -38,8 +38,7 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
 class ExpenseAPIViewSet(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
-    # permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
 
     def get_queryset(self):
         if self.request.user.is_superuser:

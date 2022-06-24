@@ -172,3 +172,6 @@ class Migration(migrations.Migration):
         ),
         migrations.RunSQL(sql_request, reverse_sql=migrations.RunSQL.noop)
     ]
+
+6. Удаляем category_old и параметр null=True у FK таблицы expenses.
+Так же изменяем всю логику приложения к первоначальному виду.
