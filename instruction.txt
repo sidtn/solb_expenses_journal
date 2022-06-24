@@ -64,3 +64,28 @@ COMMIT;
  owner_id | bigint                 |           |          |
  uuid     | uuid                   |           | not null |
 
+2. Убираем внешний ключ category в таблице expenses, для этого FK меняем на IntegerField
+Миграция:
+
+    operations = [
+        migrations.AlterField(
+            model_name='expense',
+            name='category',
+            field=models.IntegerField(),
+        ),
+    ]
+
+SQLrequest:
+
+BEGIN;
+SET CONSTRAINTS "journal_api_expense_category_id_ce49a51c_fk_journal_a" IMMEDIATE; ALTER TABLE "journal_api_expense" DROP CONSTRAINT "journal_api_expense_category_id_ce49a51c_fk_journal_a";
+DROP INDEX IF EXISTS "journal_api_expense_category_id_ce49a51c";
+ALTER TABLE "journal_api_expense" RENAME COLUMN "category_id" TO "category";
+ALTER TABLE "journal_api_expense" ALTER COLUMN "category" TYPE integer USING "category"::integer;
+COMMIT;
+
+После этого шага клиенты могут создавать в базе записи с несуществующими категориями, поэтому следует изменть пермишены в
+ExpenseAPIViewSet на ReadOnly
+
+
+
