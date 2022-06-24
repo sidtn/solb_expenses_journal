@@ -1,0 +1,66 @@
+1. На этом шаге нужно добавить поле uuid в таблице category и запонить его уникальными значениями uuid.
+Для этого в модели Category добавляем поле:
+uuid = models.UUIDField(
+    max_length=36,
+    unique=True,
+    default=uuid.uuid4,
+    editable=False
+)
+
+makemigrations сформирует следующую миграцию:
+
+    operations = [
+        migrations.AddField(
+            model_name='category',
+            name='uuid',
+            field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True),
+        ),
+    ]
+
+Данная миграция добавит в таблицу поле с заполненым неуникальным uuid, поэтому приводим ее к следующему виду:
+
+    operations = [
+        migrations.AddField(
+            model_name='category',
+            name='uuid',
+            field=models.UUIDField(editable=False, null=True),
+        ),
+    ]
+
+SQLrequest:
+
+BEGIN;
+ALTER TABLE "journal_api_category" ADD COLUMN "uuid" uuid NULL;
+COMMIT;
+
+Далее нужно заполнить столбец uuid уникальными значениями. Для этого создаем пустую миграцию и прописываем туда следующую логику:
+
+    migrations.RunSQL(
+        """CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; """
+        """UPDATE journal_api_category SET uuid = uuid_generate_v4()::uuid WHERE uuid IS NULL;""",
+        reverse_sql=RunSQL.noop
+        ),
+    migrations.AlterField(
+        model_name='category',
+        name='uuid',
+        field=models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    )
+Здесь мы заполняем поля uuid и добавляем требуемые параметры столбцу uuid
+
+SQLrequest:
+BEGIN;
+ALTER TABLE "journal_api_category" ALTER COLUMN "uuid" SET DEFAULT 'f3d83f38-3bc1-4e11-af24-8aa7c5af17ed'::uuid;
+UPDATE "journal_api_category" SET "uuid" = 'aa447af4-fdd1-414d-86fb-0762b29bc88e'::uuid WHERE "uuid" IS NULL;
+ALTER TABLE "journal_api_category" ALTER COLUMN "uuid" SET NOT NULL;
+ALTER TABLE "journal_api_category" ADD CONSTRAINT "journal_api_category_uuid_0ee43696_uniq" UNIQUE ("uuid");
+ALTER TABLE "journal_api_category" ALTER COLUMN "uuid" DROP DEFAULT;
+COMMIT;
+
+Таблица после применения миграций
+  Column  |          Type          | Collation | Nullable |
+----------+------------------------+-----------+----------+
+ id       | bigint                 |           | not null |
+ name     | character varying(100) |           | not null |
+ owner_id | bigint                 |           |          |
+ uuid     | uuid                   |           | not null |
+
