@@ -1,4 +1,4 @@
-import uuid as uuid
+import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext as _
@@ -26,11 +26,11 @@ class Category(models.Model):
         User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories"
     )
     name = models.CharField(max_length=100, verbose_name="Expense category")
-    id = models.IntegerField(null=True)
+    id = models.IntegerField(unique=True)
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            last_id = self.objects.all().aggregate(largest=models.Max("id"))["largest"]
+            last_id = Category.objects.values("id").aggregate(largest=models.Max("id"))["largest"]
             if last_id is not None:
                 self.id = last_id + 1
 

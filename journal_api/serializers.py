@@ -27,6 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
 
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Category

@@ -3,6 +3,8 @@
 from django.db import migrations, models
 import uuid
 
+from django.db.migrations import RunSQL
+
 
 class Migration(migrations.Migration):
 
@@ -14,9 +16,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='category',
             name='id_backup',
-            field=models.IntegerField(null=True),
+            field=models.BigIntegerField(null=True),
         ),
-        migrations.RunSQL("UPDATE journal_api_category SET id_backup = id"),
+        migrations.RunSQL("UPDATE journal_api_category SET id_backup = id", reverse_sql=RunSQL.noop),
         migrations.RemoveField(
             model_name='category',
             name='id'
@@ -30,5 +32,10 @@ class Migration(migrations.Migration):
             model_name='category',
             old_name='id_backup',
             new_name='id'
+        ),
+        migrations.AlterField(
+            model_name='category',
+            name='id',
+            field=models.IntegerField(editable=False, unique=True)
         )
     ]
