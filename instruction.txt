@@ -141,3 +141,34 @@ COMMIT;
 BEGIN;
 ALTER TABLE "journal_api_expense" RENAME COLUMN "category" TO "category_old";
 COMMIT;
+
+5. Создаем FK category в таблице expenses.
+category = models.ForeignKey(
+    Category,
+    related_name='items',
+    on_delete=models.CASCADE,
+    null=True
+    )
+Создаем миграцию и заполняем поле связанными uuid
+
+sql_request ="""UPDATE journal_api_expense
+                SET category_id = journal_api_category.uuid
+                FROM journal_api_category
+                WHERE
+                journal_api_expense.category_old = journal_api_category.id;"""
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('journal_api', '0006_rename_category_expense_category_old'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='expense',
+            name='category',
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='journal_api.category'),
+        ),
+        migrations.RunSQL(sql_request, reverse_sql=migrations.RunSQL.noop)
+    ]
