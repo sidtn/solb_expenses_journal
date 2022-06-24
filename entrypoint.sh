@@ -4,7 +4,6 @@ ADMIN_USERNAME=${ADMIN_USERNAME}
 ADMIN_EMAIL=${ADMIN_EMAIL}
 ADMIN_PASSWORD=${ADMIN_PASSWORD}
 
-./manage.py makemigrations
 ./manage.py migrate
 ./manage.py loaddata categories.json
 
