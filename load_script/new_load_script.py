@@ -1,4 +1,5 @@
 import random
+import time
 from multiprocessing.pool import ThreadPool
 
 import requests
@@ -84,16 +85,21 @@ class AppLoader:
             print("get request to total expenses")
 
     def load(self):
-        while True:
-            self.create_user()
-            for _ in range(100):
-                self.add_expense()
-            for _ in range(5):
-                self.add_new_category()
-            for _ in range(10):
-                self.get_to_expenses()
-            for _ in range(10):
-                self.get_to_total_expenses()
+        try:
+            while True:
+                self.create_user()
+                for _ in range(100):
+                    self.add_expense()
+                for _ in range(5):
+                    self.add_new_category()
+                for _ in range(10):
+                    self.get_to_expenses()
+                for _ in range(10):
+                    self.get_to_total_expenses()
+        except requests.exceptions.RequestException:
+            print("no connection to server")
+            time.sleep(10)
+            self.load()
 
 
 if __name__ == "__main__":
