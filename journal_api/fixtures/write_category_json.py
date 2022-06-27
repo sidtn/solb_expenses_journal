@@ -1,4 +1,5 @@
 import json
+import uuid
 
 
 def write_category_json(file_name):
@@ -7,9 +8,9 @@ def write_category_json(file_name):
     with open(file_name, "r", encoding="utf-8") as file:
         for line in file:
             category_dict = {
-                "fields": {"name": line.strip(), "owner": None},
+                "fields": {"name": line.strip(), "owner": None, "id": pk_index,},
                 "model": "journal_api.category",
-                "pk": pk_index,
+                "pk": uuid.uuid4().hex
             }
             pk_index += 1
             categories_list.append(category_dict)

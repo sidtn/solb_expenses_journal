@@ -38,8 +38,7 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
 class ExpenseAPIViewSet(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
-    # permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -48,6 +47,24 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
             user = self.request.user
             return Expense.objects.filter(owner=user)
         return Expense.objects.all()
+
+    def create(self, request, *args, **kwargs):
+
+        # old api support --------------------------------
+        if request.data["category"].isdigit():
+            try:
+                category_id = int(request.data["category"])
+                category_uuid = Category.objects.values("uuid").get(id=category_id)["uuid"]
+                request.data._mutable = True
+                request.data.update({"category": category_uuid})
+            except Category.DoesNotExist:
+                pass
+        # ------------------------------------------------
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     @action(url_path="total", methods=["GET"], detail=False)
     def total_expenses(self, request):
