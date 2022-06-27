@@ -7,7 +7,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
+from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly, IsAdminOrReadOnly
 from journal_api.models import Category, Expense
 from journal_api.serializers import (
     CategorySerializer,
@@ -38,7 +38,8 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
 class ExpenseAPIViewSet(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
-    permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+    # permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+    permission_classes = [IsAdminOrReadOnly]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
