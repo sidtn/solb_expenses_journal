@@ -1,7 +1,7 @@
 import uuid as uuid
 
 from django.contrib.auth.models import AbstractUser
-from django.db import connection, models
+from django.db import models
 from django.utils.translation import gettext as _
 
 from journal_api.core.validators import validate_positive
@@ -31,6 +31,9 @@ class Category(models.Model):
     uuid = models.UUIDField(
         max_length=36, default=uuid.uuid4, primary_key=True, editable=False
     )
+    parent = models.ForeignKey(
+        "self", related_name="children", on_delete=models.CASCADE, blank=True, null=True
+    )
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -43,9 +46,9 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            last_id = Category.objects.all().aggregate(
-                largest=models.Max("id")
-            )["largest"]
+            last_id = Category.objects.all().aggregate(largest=models.Max("id"))[
+                "largest"
+            ]
             if last_id is not None:
                 self.id = last_id + 1
             else:
@@ -62,9 +65,7 @@ class Category(models.Model):
 
 
 class Expense(models.Model):
-    owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="expenses"
-    )
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expenses")
     amount = models.DecimalField(
         max_digits=10, decimal_places=2, validators=[validate_positive]
     )
@@ -72,9 +73,7 @@ class Expense(models.Model):
         Category,
         on_delete=models.CASCADE,
     )
-    currency = models.ForeignKey(
-        Currency, on_delete=models.CASCADE, default="USD"
-    )
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, default="USD")
     short_description = models.CharField(
         max_length=255, verbose_name="Short description", blank=True
     )

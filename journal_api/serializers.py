@@ -28,10 +28,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
     id = serializers.IntegerField(read_only=True)
+    children = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
-        fields = ("id", "uuid", "name", "owner")
+        fields = ("id", "uuid", "name", "owner", "parent", "children")
+
+    def get_children(self, obj):
+        return [i.uuid for i in obj.children.all() if obj.children.all()]
 
 
 class ExpenseSerializer(serializers.ModelSerializer):

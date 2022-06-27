@@ -23,17 +23,13 @@ class UserTests(APITestCase):
         }
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(
-            User.objects.get(username="testuser").username, "testuser"
-        )
+        self.assertEqual(User.objects.get(username="testuser").username, "testuser")
         self.assertEqual(
             User.objects.get(email="test@email.com").email, "test@email.com"
         )
 
     def test_login_user(self):
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.create_user("testuser", "test@email.com", "testpassword")
         self.client.force_authenticate(user)
         response = self.client.get(reverse("category-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -42,6 +38,12 @@ class UserTests(APITestCase):
 
 
 class CategoryTests(APITestCase):
+
+    fixtures = [
+        "categories.json",
+        "users.json",
+    ]
+
     def test_get_categories_no_authenticated(self):
         url = reverse("category-list")
         response = self.client.get(url)
@@ -49,23 +51,32 @@ class CategoryTests(APITestCase):
 
     def test_get_categories_authenticated(self):
         url = reverse("category-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.create_user("testuser", "test@email.com", "testpassword")
         self.client.force_authenticate(user)
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_category(self):
         url = reverse("category-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.get(username="dale77")
         self.client.force_authenticate(user)
-        data = {"owner": user.pk, "name": "testcategory"}
+        data = {
+            "owner": user.pk,
+            "name": "testcategory",
+            "parent": "2f74be5346384cea88d25613e4620cec",
+        }
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["name"], "testcategory")
+        self.assertEqual(
+            response.data["parent"].hex, "2f74be5346384cea88d25613e4620cec"
+        )
+        self.assertEqual(
+            Category.objects.get(pk="2f74be5346384cea88d25613e4620cec")
+            .children.first()
+            .name,
+            "testcategory",
+        )
 
 
 class ExpenseTests(APITestCase):
@@ -84,18 +95,14 @@ class ExpenseTests(APITestCase):
 
     def test_get_expenses_authenticated(self):
         url = reverse("expense-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.get(username="dale77")
         self.client.force_authenticate(user)
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_expense(self):
         url = reverse("expense-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.get(username="dale77")
         self.client.force_authenticate(user)
         data = {
             "owner": user.pk,
@@ -107,9 +114,7 @@ class ExpenseTests(APITestCase):
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["amount"], "10.25")
-        self.assertEqual(
-            response.data["category"], Category.objects.first().pk
-        )
+        self.assertEqual(response.data["category"], Category.objects.first().pk)
         self.assertEqual(response.data["short_description"], "too much water")
 
     def test_get_total_expense_without_query(self):
