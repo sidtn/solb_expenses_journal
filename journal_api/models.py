@@ -48,7 +48,11 @@ class Expense(models.Model):
     amount = models.DecimalField(
         max_digits=10, decimal_places=2, validators=[validate_positive]
     )
-    # category = models.ForeignKey("Category", on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=True
+    )
     category_old = models.IntegerField()
     short_description = models.CharField(
         max_length=255, verbose_name="Short description", blank=True
