@@ -64,3 +64,65 @@ COMMIT;
  owner_id | bigint                 |           |          |
  uuid     | uuid                   |           | not null |
 
+2. Убираем внешний ключ category в таблице expenses, для этого FK меняем на IntegerField
+Миграция:
+
+    operations = [
+        migrations.AlterField(
+            model_name='expense',
+            name='category',
+            field=models.IntegerField(),
+        ),
+    ]
+
+SQLrequest:
+
+BEGIN;
+SET CONSTRAINTS "journal_api_expense_category_id_ce49a51c_fk_journal_a" IMMEDIATE; ALTER TABLE "journal_api_expense" DROP CONSTRAINT "journal_api_expense_category_id_ce49a51c_fk_journal_a";
+DROP INDEX IF EXISTS "journal_api_expense_category_id_ce49a51c";
+ALTER TABLE "journal_api_expense" RENAME COLUMN "category_id" TO "category";
+ALTER TABLE "journal_api_expense" ALTER COLUMN "category" TYPE integer USING "category"::integer;
+COMMIT;
+
+После этого шага клиенты могут создавать в базе записи с несуществующими категориями, поэтому следует изменть пермишены в
+ExpenseAPIViewSet на ReadOnly
+
+3. Меняем PK таблицы category c id на uuid.
+Для этого в модели Category вместо параметра unique=True поля uuid записываем primary_key=True.
+Поле id делаем IntegerField(editable=False).
+Так же правим CategorySerializer
+И все таки я не нашел способа сделать non-pk поле автоинкрементируемым на уровне базы, пришлось писать свою логику
+
+Миграция:
+
+    operations = [
+        migrations.AlterField(
+            model_name='category',
+            name='id',
+            field=models.IntegerField(editable=False),
+        ),
+        migrations.AlterField(
+            model_name='category',
+            name='uuid',
+            field=models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False),
+        ),
+    ]
+
+SQLrequest:
+BEGIN;
+--
+-- Alter field id on category
+--
+ALTER TABLE "journal_api_category" DROP CONSTRAINT "journal_api_category_id_fda75754_uniq";
+ALTER TABLE "journal_api_category" ALTER COLUMN "id" TYPE integer USING "id"::integer;
+DROP SEQUENCE IF EXISTS "journal_api_category_id_seq" CASCADE;
+ALTER TABLE "journal_api_category" DROP CONSTRAINT "journal_api_category_id_fda75754_pk";
+DROP INDEX IF EXISTS "journal_api_category_id_fda75754_like";
+--
+-- Alter field uuid on category
+--
+ALTER TABLE "journal_api_category" DROP CONSTRAINT "journal_api_category_uuid_0ee43696_uniq";
+ALTER TABLE "journal_api_category" ADD CONSTRAINT "journal_api_category_uuid_0ee43696_pk" PRIMARY KEY ("uuid");
+COMMIT;
+
+Кстати здесь хорошо видно зачем было отвязывать таблицу, в противном случае нам бы дропнуло все записи в таблице expense
