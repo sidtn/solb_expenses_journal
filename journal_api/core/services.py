@@ -9,7 +9,7 @@ def get_total_expenses(request):
 
     """
     :param request:
-    :return: total expenses by time and by category.
+    :return: total expenses by time, category and currency.
     Returns the result for the user's currencies, if it is not explicitly specified in the query parameters.
     """
 
@@ -37,6 +37,7 @@ def get_total_expenses(request):
         return {
             "start_date": start_date,
             "end_date": end_date,
+            "category": category,
             "currency": currency,
             "total_expenses": total_expenses["sum"],
         }
@@ -61,6 +62,7 @@ def get_total_expenses(request):
     expenses_by_currency = {
         "start_date": start_date,
         "end_date": end_date,
+        "category": category,
         "expenses": expenses,
     }
 
