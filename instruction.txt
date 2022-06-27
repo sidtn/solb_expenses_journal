@@ -126,3 +126,18 @@ ALTER TABLE "journal_api_category" ADD CONSTRAINT "journal_api_category_uuid_0ee
 COMMIT;
 
 Кстати здесь хорошо видно зачем было отвязывать таблицу, в противном случае нам бы дропнуло все записи в таблице expense
+
+4. Переименовываем поле category таблицы espenses в category_old.
+Создаем миграцию и применяем ее.
+
+    operations = [
+        migrations.RenameField(
+            model_name='expense',
+            old_name='category',
+            new_name='category_old',
+        ),
+    ]
+
+BEGIN;
+ALTER TABLE "journal_api_expense" RENAME COLUMN "category" TO "category_old";
+COMMIT;

@@ -17,8 +17,8 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
-@admin.register(Expense)
-class ExpenseAdmin(admin.ModelAdmin):
-    list_display = ["category", "amount", "owner", "created_at"]
-    ordering = ["category", "amount", "created_at"]
-    search_fields = ["category", "owner"]
+# @admin.register(Expense)
+# class ExpenseAdmin(admin.ModelAdmin):
+#     list_display = ["category", "amount", "owner", "created_at"]
+#     ordering = ["category", "amount", "created_at"]
+#     search_fields = ["category", "owner"]

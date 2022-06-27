@@ -49,7 +49,7 @@ class Expense(models.Model):
         max_digits=10, decimal_places=2, validators=[validate_positive]
     )
     # category = models.ForeignKey("Category", on_delete=models.CASCADE)
-    category = models.IntegerField()
+    category_old = models.IntegerField()
     short_description = models.CharField(
         max_length=255, verbose_name="Short description", blank=True
     )
@@ -57,4 +57,4 @@ class Expense(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.owner} - {self.amount} - {self.category}"
+        return f"{self.owner} - {self.amount}"
