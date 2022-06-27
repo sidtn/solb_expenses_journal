@@ -8,14 +8,18 @@ def write_category_json(file_name):
     with open(file_name, "r", encoding="utf-8") as file:
         for line in file:
             category_dict = {
-                "fields": {"name": line.strip(), "owner": None, "id": pk_index,},
+                "fields": {
+                    "name": line.strip(),
+                    "owner": None,
+                    "id": pk_index,
+                },
                 "model": "journal_api.category",
-                "pk": uuid.uuid4().hex
+                "pk": uuid.uuid4().hex,
             }
             pk_index += 1
             categories_list.append(category_dict)
 
-    with open("categories.json", "w", encoding="utf8") as json_file:
+    with open("../categories.json", "w", encoding="utf8") as json_file:
         json_data = json.dumps(
             categories_list, ensure_ascii=False, sort_keys=True, indent=4
         )

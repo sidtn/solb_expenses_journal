@@ -1,0 +1,1178 @@
+[
+    {
+        "fields": {
+            "name": "United Arab Emirates Dirham"
+        },
+        "model": "journal_api.currency",
+        "pk": "AED"
+    },
+    {
+        "fields": {
+            "name": "Afghan Afghani"
+        },
+        "model": "journal_api.currency",
+        "pk": "AFN"
+    },
+    {
+        "fields": {
+            "name": "Albanian Lek"
+        },
+        "model": "journal_api.currency",
+        "pk": "ALL"
+    },
+    {
+        "fields": {
+            "name": "Armenian Dram"
+        },
+        "model": "journal_api.currency",
+        "pk": "AMD"
+    },
+    {
+        "fields": {
+            "name": "Netherlands Antillean Guilder"
+        },
+        "model": "journal_api.currency",
+        "pk": "ANG"
+    },
+    {
+        "fields": {
+            "name": "Angolan Kwanza"
+        },
+        "model": "journal_api.currency",
+        "pk": "AOA"
+    },
+    {
+        "fields": {
+            "name": "Argentine Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "ARS"
+    },
+    {
+        "fields": {
+            "name": "Australian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "AUD"
+    },
+    {
+        "fields": {
+            "name": "Aruban Florin"
+        },
+        "model": "journal_api.currency",
+        "pk": "AWG"
+    },
+    {
+        "fields": {
+            "name": "Azerbaijani Manat"
+        },
+        "model": "journal_api.currency",
+        "pk": "AZN"
+    },
+    {
+        "fields": {
+            "name": "Bosnia-Herzegovina Convertible Mark"
+        },
+        "model": "journal_api.currency",
+        "pk": "BAM"
+    },
+    {
+        "fields": {
+            "name": "Barbadian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BBD"
+    },
+    {
+        "fields": {
+            "name": "Bangladeshi Taka"
+        },
+        "model": "journal_api.currency",
+        "pk": "BDT"
+    },
+    {
+        "fields": {
+            "name": "Bulgarian Lev"
+        },
+        "model": "journal_api.currency",
+        "pk": "BGN"
+    },
+    {
+        "fields": {
+            "name": "Bahraini Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BHD"
+    },
+    {
+        "fields": {
+            "name": "Burundian Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "BIF"
+    },
+    {
+        "fields": {
+            "name": "Bermudan Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BMD"
+    },
+    {
+        "fields": {
+            "name": "Brunei Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BND"
+    },
+    {
+        "fields": {
+            "name": "Bolivian Boliviano"
+        },
+        "model": "journal_api.currency",
+        "pk": "BOB"
+    },
+    {
+        "fields": {
+            "name": "Brazilian Real"
+        },
+        "model": "journal_api.currency",
+        "pk": "BRL"
+    },
+    {
+        "fields": {
+            "name": "Bahamian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BSD"
+    },
+    {
+        "fields": {
+            "name": "Bitcoin"
+        },
+        "model": "journal_api.currency",
+        "pk": "BTC"
+    },
+    {
+        "fields": {
+            "name": "Bhutanese Ngultrum"
+        },
+        "model": "journal_api.currency",
+        "pk": "BTN"
+    },
+    {
+        "fields": {
+            "name": "Botswanan Pula"
+        },
+        "model": "journal_api.currency",
+        "pk": "BWP"
+    },
+    {
+        "fields": {
+            "name": "New Belarusian Ruble"
+        },
+        "model": "journal_api.currency",
+        "pk": "BYN"
+    },
+    {
+        "fields": {
+            "name": "Belarusian Ruble"
+        },
+        "model": "journal_api.currency",
+        "pk": "BYR"
+    },
+    {
+        "fields": {
+            "name": "Belize Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "BZD"
+    },
+    {
+        "fields": {
+            "name": "Canadian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "CAD"
+    },
+    {
+        "fields": {
+            "name": "Congolese Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "CDF"
+    },
+    {
+        "fields": {
+            "name": "Swiss Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "CHF"
+    },
+    {
+        "fields": {
+            "name": "Chilean Unit of Account (UF)"
+        },
+        "model": "journal_api.currency",
+        "pk": "CLF"
+    },
+    {
+        "fields": {
+            "name": "Chilean Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "CLP"
+    },
+    {
+        "fields": {
+            "name": "Chinese Yuan"
+        },
+        "model": "journal_api.currency",
+        "pk": "CNY"
+    },
+    {
+        "fields": {
+            "name": "Colombian Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "COP"
+    },
+    {
+        "fields": {
+            "name": "Costa Rican Colón"
+        },
+        "model": "journal_api.currency",
+        "pk": "CRC"
+    },
+    {
+        "fields": {
+            "name": "Cuban Convertible Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "CUC"
+    },
+    {
+        "fields": {
+            "name": "Cuban Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "CUP"
+    },
+    {
+        "fields": {
+            "name": "Cape Verdean Escudo"
+        },
+        "model": "journal_api.currency",
+        "pk": "CVE"
+    },
+    {
+        "fields": {
+            "name": "Czech Republic Koruna"
+        },
+        "model": "journal_api.currency",
+        "pk": "CZK"
+    },
+    {
+        "fields": {
+            "name": "Djiboutian Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "DJF"
+    },
+    {
+        "fields": {
+            "name": "Danish Krone"
+        },
+        "model": "journal_api.currency",
+        "pk": "DKK"
+    },
+    {
+        "fields": {
+            "name": "Dominican Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "DOP"
+    },
+    {
+        "fields": {
+            "name": "Algerian Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "DZD"
+    },
+    {
+        "fields": {
+            "name": "Egyptian Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "EGP"
+    },
+    {
+        "fields": {
+            "name": "Eritrean Nakfa"
+        },
+        "model": "journal_api.currency",
+        "pk": "ERN"
+    },
+    {
+        "fields": {
+            "name": "Ethiopian Birr"
+        },
+        "model": "journal_api.currency",
+        "pk": "ETB"
+    },
+    {
+        "fields": {
+            "name": "Euro"
+        },
+        "model": "journal_api.currency",
+        "pk": "EUR"
+    },
+    {
+        "fields": {
+            "name": "Fijian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "FJD"
+    },
+    {
+        "fields": {
+            "name": "Falkland Islands Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "FKP"
+    },
+    {
+        "fields": {
+            "name": "British Pound Sterling"
+        },
+        "model": "journal_api.currency",
+        "pk": "GBP"
+    },
+    {
+        "fields": {
+            "name": "Georgian Lari"
+        },
+        "model": "journal_api.currency",
+        "pk": "GEL"
+    },
+    {
+        "fields": {
+            "name": "Guernsey Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "GGP"
+    },
+    {
+        "fields": {
+            "name": "Ghanaian Cedi"
+        },
+        "model": "journal_api.currency",
+        "pk": "GHS"
+    },
+    {
+        "fields": {
+            "name": "Gibraltar Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "GIP"
+    },
+    {
+        "fields": {
+            "name": "Gambian Dalasi"
+        },
+        "model": "journal_api.currency",
+        "pk": "GMD"
+    },
+    {
+        "fields": {
+            "name": "Guinean Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "GNF"
+    },
+    {
+        "fields": {
+            "name": "Guatemalan Quetzal"
+        },
+        "model": "journal_api.currency",
+        "pk": "GTQ"
+    },
+    {
+        "fields": {
+            "name": "Guyanaese Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "GYD"
+    },
+    {
+        "fields": {
+            "name": "Hong Kong Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "HKD"
+    },
+    {
+        "fields": {
+            "name": "Honduran Lempira"
+        },
+        "model": "journal_api.currency",
+        "pk": "HNL"
+    },
+    {
+        "fields": {
+            "name": "Croatian Kuna"
+        },
+        "model": "journal_api.currency",
+        "pk": "HRK"
+    },
+    {
+        "fields": {
+            "name": "Haitian Gourde"
+        },
+        "model": "journal_api.currency",
+        "pk": "HTG"
+    },
+    {
+        "fields": {
+            "name": "Hungarian Forint"
+        },
+        "model": "journal_api.currency",
+        "pk": "HUF"
+    },
+    {
+        "fields": {
+            "name": "Indonesian Rupiah"
+        },
+        "model": "journal_api.currency",
+        "pk": "IDR"
+    },
+    {
+        "fields": {
+            "name": "Israeli New Sheqel"
+        },
+        "model": "journal_api.currency",
+        "pk": "ILS"
+    },
+    {
+        "fields": {
+            "name": "Manx pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "IMP"
+    },
+    {
+        "fields": {
+            "name": "Indian Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "INR"
+    },
+    {
+        "fields": {
+            "name": "Iraqi Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "IQD"
+    },
+    {
+        "fields": {
+            "name": "Iranian Rial"
+        },
+        "model": "journal_api.currency",
+        "pk": "IRR"
+    },
+    {
+        "fields": {
+            "name": "Icelandic Króna"
+        },
+        "model": "journal_api.currency",
+        "pk": "ISK"
+    },
+    {
+        "fields": {
+            "name": "Jersey Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "JEP"
+    },
+    {
+        "fields": {
+            "name": "Jamaican Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "JMD"
+    },
+    {
+        "fields": {
+            "name": "Jordanian Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "JOD"
+    },
+    {
+        "fields": {
+            "name": "Japanese Yen"
+        },
+        "model": "journal_api.currency",
+        "pk": "JPY"
+    },
+    {
+        "fields": {
+            "name": "Kenyan Shilling"
+        },
+        "model": "journal_api.currency",
+        "pk": "KES"
+    },
+    {
+        "fields": {
+            "name": "Kyrgystani Som"
+        },
+        "model": "journal_api.currency",
+        "pk": "KGS"
+    },
+    {
+        "fields": {
+            "name": "Cambodian Riel"
+        },
+        "model": "journal_api.currency",
+        "pk": "KHR"
+    },
+    {
+        "fields": {
+            "name": "Comorian Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "KMF"
+    },
+    {
+        "fields": {
+            "name": "North Korean Won"
+        },
+        "model": "journal_api.currency",
+        "pk": "KPW"
+    },
+    {
+        "fields": {
+            "name": "South Korean Won"
+        },
+        "model": "journal_api.currency",
+        "pk": "KRW"
+    },
+    {
+        "fields": {
+            "name": "Kuwaiti Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "KWD"
+    },
+    {
+        "fields": {
+            "name": "Cayman Islands Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "KYD"
+    },
+    {
+        "fields": {
+            "name": "Kazakhstani Tenge"
+        },
+        "model": "journal_api.currency",
+        "pk": "KZT"
+    },
+    {
+        "fields": {
+            "name": "Laotian Kip"
+        },
+        "model": "journal_api.currency",
+        "pk": "LAK"
+    },
+    {
+        "fields": {
+            "name": "Lebanese Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "LBP"
+    },
+    {
+        "fields": {
+            "name": "Sri Lankan Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "LKR"
+    },
+    {
+        "fields": {
+            "name": "Liberian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "LRD"
+    },
+    {
+        "fields": {
+            "name": "Lesotho Loti"
+        },
+        "model": "journal_api.currency",
+        "pk": "LSL"
+    },
+    {
+        "fields": {
+            "name": "Lithuanian Litas"
+        },
+        "model": "journal_api.currency",
+        "pk": "LTL"
+    },
+    {
+        "fields": {
+            "name": "Latvian Lats"
+        },
+        "model": "journal_api.currency",
+        "pk": "LVL"
+    },
+    {
+        "fields": {
+            "name": "Libyan Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "LYD"
+    },
+    {
+        "fields": {
+            "name": "Moroccan Dirham"
+        },
+        "model": "journal_api.currency",
+        "pk": "MAD"
+    },
+    {
+        "fields": {
+            "name": "Moldovan Leu"
+        },
+        "model": "journal_api.currency",
+        "pk": "MDL"
+    },
+    {
+        "fields": {
+            "name": "Malagasy Ariary"
+        },
+        "model": "journal_api.currency",
+        "pk": "MGA"
+    },
+    {
+        "fields": {
+            "name": "Macedonian Denar"
+        },
+        "model": "journal_api.currency",
+        "pk": "MKD"
+    },
+    {
+        "fields": {
+            "name": "Myanma Kyat"
+        },
+        "model": "journal_api.currency",
+        "pk": "MMK"
+    },
+    {
+        "fields": {
+            "name": "Mongolian Tugrik"
+        },
+        "model": "journal_api.currency",
+        "pk": "MNT"
+    },
+    {
+        "fields": {
+            "name": "Macanese Pataca"
+        },
+        "model": "journal_api.currency",
+        "pk": "MOP"
+    },
+    {
+        "fields": {
+            "name": "Mauritanian Ouguiya"
+        },
+        "model": "journal_api.currency",
+        "pk": "MRO"
+    },
+    {
+        "fields": {
+            "name": "Mauritian Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "MUR"
+    },
+    {
+        "fields": {
+            "name": "Maldivian Rufiyaa"
+        },
+        "model": "journal_api.currency",
+        "pk": "MVR"
+    },
+    {
+        "fields": {
+            "name": "Malawian Kwacha"
+        },
+        "model": "journal_api.currency",
+        "pk": "MWK"
+    },
+    {
+        "fields": {
+            "name": "Mexican Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "MXN"
+    },
+    {
+        "fields": {
+            "name": "Malaysian Ringgit"
+        },
+        "model": "journal_api.currency",
+        "pk": "MYR"
+    },
+    {
+        "fields": {
+            "name": "Mozambican Metical"
+        },
+        "model": "journal_api.currency",
+        "pk": "MZN"
+    },
+    {
+        "fields": {
+            "name": "Namibian Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "NAD"
+    },
+    {
+        "fields": {
+            "name": "Nigerian Naira"
+        },
+        "model": "journal_api.currency",
+        "pk": "NGN"
+    },
+    {
+        "fields": {
+            "name": "Nicaraguan Córdoba"
+        },
+        "model": "journal_api.currency",
+        "pk": "NIO"
+    },
+    {
+        "fields": {
+            "name": "Norwegian Krone"
+        },
+        "model": "journal_api.currency",
+        "pk": "NOK"
+    },
+    {
+        "fields": {
+            "name": "Nepalese Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "NPR"
+    },
+    {
+        "fields": {
+            "name": "New Zealand Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "NZD"
+    },
+    {
+        "fields": {
+            "name": "Omani Rial"
+        },
+        "model": "journal_api.currency",
+        "pk": "OMR"
+    },
+    {
+        "fields": {
+            "name": "Panamanian Balboa"
+        },
+        "model": "journal_api.currency",
+        "pk": "PAB"
+    },
+    {
+        "fields": {
+            "name": "Peruvian Nuevo Sol"
+        },
+        "model": "journal_api.currency",
+        "pk": "PEN"
+    },
+    {
+        "fields": {
+            "name": "Papua New Guinean Kina"
+        },
+        "model": "journal_api.currency",
+        "pk": "PGK"
+    },
+    {
+        "fields": {
+            "name": "Philippine Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "PHP"
+    },
+    {
+        "fields": {
+            "name": "Pakistani Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "PKR"
+    },
+    {
+        "fields": {
+            "name": "Polish Zloty"
+        },
+        "model": "journal_api.currency",
+        "pk": "PLN"
+    },
+    {
+        "fields": {
+            "name": "Paraguayan Guarani"
+        },
+        "model": "journal_api.currency",
+        "pk": "PYG"
+    },
+    {
+        "fields": {
+            "name": "Qatari Rial"
+        },
+        "model": "journal_api.currency",
+        "pk": "QAR"
+    },
+    {
+        "fields": {
+            "name": "Romanian Leu"
+        },
+        "model": "journal_api.currency",
+        "pk": "RON"
+    },
+    {
+        "fields": {
+            "name": "Serbian Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "RSD"
+    },
+    {
+        "fields": {
+            "name": "Russian Ruble"
+        },
+        "model": "journal_api.currency",
+        "pk": "RUB"
+    },
+    {
+        "fields": {
+            "name": "Rwandan Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "RWF"
+    },
+    {
+        "fields": {
+            "name": "Saudi Riyal"
+        },
+        "model": "journal_api.currency",
+        "pk": "SAR"
+    },
+    {
+        "fields": {
+            "name": "Solomon Islands Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "SBD"
+    },
+    {
+        "fields": {
+            "name": "Seychellois Rupee"
+        },
+        "model": "journal_api.currency",
+        "pk": "SCR"
+    },
+    {
+        "fields": {
+            "name": "Sudanese Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "SDG"
+    },
+    {
+        "fields": {
+            "name": "Swedish Krona"
+        },
+        "model": "journal_api.currency",
+        "pk": "SEK"
+    },
+    {
+        "fields": {
+            "name": "Singapore Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "SGD"
+    },
+    {
+        "fields": {
+            "name": "Saint Helena Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "SHP"
+    },
+    {
+        "fields": {
+            "name": "Sierra Leonean Leone"
+        },
+        "model": "journal_api.currency",
+        "pk": "SLL"
+    },
+    {
+        "fields": {
+            "name": "Somali Shilling"
+        },
+        "model": "journal_api.currency",
+        "pk": "SOS"
+    },
+    {
+        "fields": {
+            "name": "Surinamese Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "SRD"
+    },
+    {
+        "fields": {
+            "name": "São Tomé and Príncipe Dobra"
+        },
+        "model": "journal_api.currency",
+        "pk": "STD"
+    },
+    {
+        "fields": {
+            "name": "Salvadoran Colón"
+        },
+        "model": "journal_api.currency",
+        "pk": "SVC"
+    },
+    {
+        "fields": {
+            "name": "Syrian Pound"
+        },
+        "model": "journal_api.currency",
+        "pk": "SYP"
+    },
+    {
+        "fields": {
+            "name": "Swazi Lilangeni"
+        },
+        "model": "journal_api.currency",
+        "pk": "SZL"
+    },
+    {
+        "fields": {
+            "name": "Thai Baht"
+        },
+        "model": "journal_api.currency",
+        "pk": "THB"
+    },
+    {
+        "fields": {
+            "name": "Tajikistani Somoni"
+        },
+        "model": "journal_api.currency",
+        "pk": "TJS"
+    },
+    {
+        "fields": {
+            "name": "Turkmenistani Manat"
+        },
+        "model": "journal_api.currency",
+        "pk": "TMT"
+    },
+    {
+        "fields": {
+            "name": "Tunisian Dinar"
+        },
+        "model": "journal_api.currency",
+        "pk": "TND"
+    },
+    {
+        "fields": {
+            "name": "Tongan Paʻanga"
+        },
+        "model": "journal_api.currency",
+        "pk": "TOP"
+    },
+    {
+        "fields": {
+            "name": "Turkish Lira"
+        },
+        "model": "journal_api.currency",
+        "pk": "TRY"
+    },
+    {
+        "fields": {
+            "name": "Trinidad and Tobago Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "TTD"
+    },
+    {
+        "fields": {
+            "name": "New Taiwan Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "TWD"
+    },
+    {
+        "fields": {
+            "name": "Tanzanian Shilling"
+        },
+        "model": "journal_api.currency",
+        "pk": "TZS"
+    },
+    {
+        "fields": {
+            "name": "Ukrainian Hryvnia"
+        },
+        "model": "journal_api.currency",
+        "pk": "UAH"
+    },
+    {
+        "fields": {
+            "name": "Ugandan Shilling"
+        },
+        "model": "journal_api.currency",
+        "pk": "UGX"
+    },
+    {
+        "fields": {
+            "name": "United States Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "USD"
+    },
+    {
+        "fields": {
+            "name": "Uruguayan Peso"
+        },
+        "model": "journal_api.currency",
+        "pk": "UYU"
+    },
+    {
+        "fields": {
+            "name": "Uzbekistan Som"
+        },
+        "model": "journal_api.currency",
+        "pk": "UZS"
+    },
+    {
+        "fields": {
+            "name": "Venezuelan Bolívar Fuerte"
+        },
+        "model": "journal_api.currency",
+        "pk": "VEF"
+    },
+    {
+        "fields": {
+            "name": "Vietnamese Dong"
+        },
+        "model": "journal_api.currency",
+        "pk": "VND"
+    },
+    {
+        "fields": {
+            "name": "Vanuatu Vatu"
+        },
+        "model": "journal_api.currency",
+        "pk": "VUV"
+    },
+    {
+        "fields": {
+            "name": "Samoan Tala"
+        },
+        "model": "journal_api.currency",
+        "pk": "WST"
+    },
+    {
+        "fields": {
+            "name": "CFA Franc BEAC"
+        },
+        "model": "journal_api.currency",
+        "pk": "XAF"
+    },
+    {
+        "fields": {
+            "name": "Silver (troy ounce)"
+        },
+        "model": "journal_api.currency",
+        "pk": "XAG"
+    },
+    {
+        "fields": {
+            "name": "Gold (troy ounce)"
+        },
+        "model": "journal_api.currency",
+        "pk": "XAU"
+    },
+    {
+        "fields": {
+            "name": "East Caribbean Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "XCD"
+    },
+    {
+        "fields": {
+            "name": "Special Drawing Rights"
+        },
+        "model": "journal_api.currency",
+        "pk": "XDR"
+    },
+    {
+        "fields": {
+            "name": "CFA Franc BCEAO"
+        },
+        "model": "journal_api.currency",
+        "pk": "XOF"
+    },
+    {
+        "fields": {
+            "name": "CFP Franc"
+        },
+        "model": "journal_api.currency",
+        "pk": "XPF"
+    },
+    {
+        "fields": {
+            "name": "Yemeni Rial"
+        },
+        "model": "journal_api.currency",
+        "pk": "YER"
+    },
+    {
+        "fields": {
+            "name": "South African Rand"
+        },
+        "model": "journal_api.currency",
+        "pk": "ZAR"
+    },
+    {
+        "fields": {
+            "name": "Zambian Kwacha (pre-2013)"
+        },
+        "model": "journal_api.currency",
+        "pk": "ZMK"
+    },
+    {
+        "fields": {
+            "name": "Zambian Kwacha"
+        },
+        "model": "journal_api.currency",
+        "pk": "ZMW"
+    },
+    {
+        "fields": {
+            "name": "Zimbabwean Dollar"
+        },
+        "model": "journal_api.currency",
+        "pk": "ZWL"
+    }
+]

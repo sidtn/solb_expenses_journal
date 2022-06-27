@@ -32,14 +32,18 @@ class AppLoader:
 
     def get_headers(self):
         with open("users.txt", "r", encoding="utf-8") as file:
-            user_data = random.choice(file.read().split("\n")[:-1]).split(" - ")
+            user_data = random.choice(file.read().split("\n")[:-1]).split(
+                " - "
+            )
             email = user_data[1]
             password = user_data[2]
             login_data = {
                 "email": email,
                 "password": password,
             }
-            json_response = requests.post(self.TOKEN_URL, data=login_data).json()
+            json_response = requests.post(
+                self.TOKEN_URL, data=login_data
+            ).json()
             token = json_response.get("access")
             return {"Authorization": f"Bearer {token}"}
 
@@ -65,6 +69,7 @@ class AppLoader:
             "category": self.get_random_category(),
             "amount": random.randint(1, 500),
             "short_description": "test_description",
+            "currency": random.choice(["USD", "BYN", "UAH"]),
         }
         json_response = requests.post(
             url=self.EXPENSES_URL, data=data, headers=self.get_headers()
@@ -75,12 +80,16 @@ class AppLoader:
             print("something is wrong")
 
     def get_to_expenses(self):
-        response = requests.get(url=self.EXPENSES_URL, headers=self.get_headers())
+        response = requests.get(
+            url=self.EXPENSES_URL, headers=self.get_headers()
+        )
         if response.status_code == 200:
             print("get request to expenses")
 
     def get_to_total_expenses(self):
-        response = requests.get(url=self.TOTAL_EXPENSES_URL, headers=self.get_headers())
+        response = requests.get(
+            url=self.TOTAL_EXPENSES_URL, headers=self.get_headers()
+        )
         if response.status_code == 200:
             print("get request to total expenses")
 

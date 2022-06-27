@@ -1,17 +1,17 @@
-import datetime
-
-from django.db.models import Q, Sum
+from django.db.models import Q
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly, IsAdminOrReadOnly
+from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
+from journal_api.core.services import get_total_expenses
 from journal_api.models import Category, Expense
 from journal_api.serializers import (
     CategorySerializer,
     ExpenseSerializer,
+    TotalExpensesSerializer,
     UserSerializer,
 )
 
@@ -54,7 +54,9 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
         if request.data["category"].isdigit():
             try:
                 category_id = int(request.data["category"])
-                category_uuid = Category.objects.values("uuid").get(id=category_id)["uuid"]
+                category_uuid = Category.objects.values("uuid").get(
+                    id=category_id
+                )["uuid"]
                 request.data._mutable = True
                 request.data.update({"category": category_uuid})
             except Category.DoesNotExist:
@@ -64,29 +66,13 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )
 
     @action(url_path="total", methods=["GET"], detail=False)
     def total_expenses(self, request):
-        user = self.request.user
-        category = self.request.query_params.get("category")
-        start_date = self.request.query_params.get("start_date")
-        end_date = self.request.query_params.get("end_date")
-        if not start_date:
-            start_date = datetime.datetime(2020, 10, 17)
-        if not end_date:
-            end_date = datetime.datetime.now()
-        params_dict = {
-            "owner__id": user.id,
-            "created_at__range": [start_date, end_date],
-        }
-        if category:
-            params_dict["category"] = category
-        total_expenses = (
-            Expense.objects.filter(**params_dict)
-            .values("amount")
-            .aggregate(sum=Sum("amount"))
-        )
-        return Response(
-            {"total expenses": total_expenses["sum"]}, status=status.HTTP_200_OK
-        )
+        qp = TotalExpensesSerializer(data=request.query_params)
+        qp.is_valid(raise_exception=True)
+        total_expenses = get_total_expenses(self.request)
+        return Response(total_expenses, status=status.HTTP_200_OK)
