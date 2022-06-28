@@ -41,7 +41,13 @@ class Category(MPTTModel):
         related_name="categories",
     )
     name = models.CharField(max_length=100, verbose_name="Expense category")
-    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    parent = TreeForeignKey(
+        "self",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="children",
+    )
     id = models.IntegerField(editable=False)
 
     def save(self, *args, **kwargs):
@@ -61,7 +67,7 @@ class Category(MPTTModel):
         verbose_name_plural = "Categories"
 
     class MPTTMeta:
-        order_insertion_by = ['name']
+        order_insertion_by = ["name"]
 
     def __str__(self):
         return self.name
