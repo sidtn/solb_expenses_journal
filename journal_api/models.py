@@ -1,8 +1,10 @@
 import uuid as uuid
 
 from django.contrib.auth.models import AbstractUser
-from django.db import connection, models
+from django.db import models
 from django.utils.translation import gettext as _
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 
 from journal_api.core.validators import validate_positive
 
@@ -27,7 +29,7 @@ class Currency(models.Model):
         verbose_name_plural = "Currencies"
 
 
-class Category(models.Model):
+class Category(MPTTModel):
     uuid = models.UUIDField(
         max_length=36, default=uuid.uuid4, primary_key=True, editable=False
     )
@@ -39,6 +41,7 @@ class Category(models.Model):
         related_name="categories",
     )
     name = models.CharField(max_length=100, verbose_name="Expense category")
+    parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     id = models.IntegerField(editable=False)
 
     def save(self, *args, **kwargs):
@@ -56,6 +59,9 @@ class Category(models.Model):
     class Meta:
         unique_together = ("owner", "name")
         verbose_name_plural = "Categories"
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def __str__(self):
         return self.name
