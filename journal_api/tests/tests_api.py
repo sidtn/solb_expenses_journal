@@ -42,6 +42,12 @@ class UserTests(APITestCase):
 
 
 class CategoryTests(APITestCase):
+
+    fixtures = [
+        "categories.json",
+        "users.json",
+    ]
+
     def test_get_categories_no_authenticated(self):
         url = reverse("category-list")
         response = self.client.get(url)
@@ -49,18 +55,14 @@ class CategoryTests(APITestCase):
 
     def test_get_categories_authenticated(self):
         url = reverse("category-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.get(username="dale77")
         self.client.force_authenticate(user)
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_category(self):
         url = reverse("category-list")
-        user = User.objects.create_user(
-            "testuser", "test@email.com", "testpassword"
-        )
+        user = User.objects.get(username="dale77")
         self.client.force_authenticate(user)
         data = {"owner": user.pk, "name": "testcategory"}
         response = self.client.post(url, data, format="json")
