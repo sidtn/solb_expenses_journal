@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -113,5 +111,3 @@ class ExpenseTests(APITestCase):
             response.data["category"], Category.objects.first().pk
         )
         self.assertEqual(response.data["short_description"], "too much water")
-
-

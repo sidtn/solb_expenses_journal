@@ -1,10 +1,7 @@
-from decimal import Decimal
-
 from django.urls import reverse
-from rest_framework import status
 from rest_framework.test import APITestCase
 
-from journal_api.models import Category, Currency, User
+from journal_api.models import User
 
 
 class TotalEndpointTest(APITestCase):
@@ -24,14 +21,14 @@ class TotalEndpointTest(APITestCase):
             data = {
                 "category": "2f74be53-4638-4cea-88d2-5613e4620cec",
                 "amount": _,
-                "currency": "BYN"
+                "currency": "BYN",
             }
             self.client.post(self.URL_CREATE_EXPENSES, data=data)
         for _, currency in enumerate(["USD", "BYN", "EUR"], start=1):
             data = {
                 "category": "2f74be53-4638-4cea-88d2-5613e4620cec",
                 "amount": _,
-                "currency": currency
+                "currency": currency,
             }
             self.client.post(self.URL_CREATE_EXPENSES, data=data)
 
@@ -45,3 +42,17 @@ class TotalEndpointTest(APITestCase):
         self.assertEqual(len(response["expenses"]), 3)
         self.assertEqual(response["expenses"][2]["currency"], "USD")
         self.assertEqual(response["expenses"][2]["total_expenses"], 1.0)
+
+    def test_get_total_expenses_query_category_currency(self):
+        url_query_category = (
+            self.URL + "?category=2f74be53-4638-4cea-88d2-5613e4620cec"
+        )
+        url_query_currency = url_query_category + "&currency=USD"
+        response = self.client.get(url_query_category).json()
+        self.assertEqual(len(response["expenses"]), 3)
+        self.assertEqual(
+            response["category"], "2f74be53-4638-4cea-88d2-5613e4620cec"
+        )
+        response = self.client.get(url_query_currency).json()
+        self.assertEqual(response["currency"], "USD")
+        self.assertEqual(response["total_expenses"], 1.0)
