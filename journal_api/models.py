@@ -1,7 +1,9 @@
 import uuid as uuid
+
 from django.contrib.auth.models import AbstractUser
-from django.db import models, connection
+from django.db import connection, models
 from django.utils.translation import gettext as _
+
 from journal_api.core.validators import validate_positive
 
 
@@ -14,24 +16,40 @@ class User(AbstractUser):
         return self.email
 
 
+class Currency(models.Model):
+    code = models.CharField(primary_key=True, max_length=3, unique=True)
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        verbose_name_plural = "Currencies"
+
+
 class Category(models.Model):
     uuid = models.UUIDField(
-        max_length=36,
-        default=uuid.uuid4,
-        primary_key=True,
-        editable=False
+        max_length=36, default=uuid.uuid4, primary_key=True, editable=False
     )
     owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name="categories"
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="categories",
     )
     name = models.CharField(max_length=100, verbose_name="Expense category")
     id = models.IntegerField(editable=False)
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            last_id = Category.objects.all().aggregate(largest=models.Max('id'))['largest']
+            last_id = Category.objects.all().aggregate(
+                largest=models.Max("id")
+            )["largest"]
             if last_id is not None:
                 self.id = last_id + 1
+            else:
+                self.id = 1
 
         super(Category, self).save(*args, **kwargs)
 
@@ -44,13 +62,18 @@ class Category(models.Model):
 
 
 class Expense(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="expenses")
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="expenses"
+    )
     amount = models.DecimalField(
         max_digits=10, decimal_places=2, validators=[validate_positive]
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
+    )
+    currency = models.ForeignKey(
+        Currency, on_delete=models.CASCADE, default="USD"
     )
     short_description = models.CharField(
         max_length=255, verbose_name="Short description", blank=True

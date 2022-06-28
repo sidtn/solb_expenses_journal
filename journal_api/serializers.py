@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from journal_api.models import Category, Expense, User
+from journal_api.models import Category, Currency, Expense, User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -43,8 +43,20 @@ class ExpenseSerializer(serializers.ModelSerializer):
         fields = (
             "id",
             "amount",
+            "currency",
             "created_at",
             "category",
             "short_description",
             "owner",
         )
+
+
+class TotalExpensesSerializer(serializers.Serializer):
+    category = serializers.PrimaryKeyRelatedField(
+        required=False, queryset=Category.objects.all()
+    )
+    start_date = serializers.DateField(required=False)
+    end_date = serializers.DateField(required=False)
+    currency = serializers.PrimaryKeyRelatedField(
+        required=False, queryset=Currency.objects.all()
+    )

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from journal_api.models import Category, Expense, User
+from journal_api.models import Category, Currency, Expense, User
 
 
 @admin.register(User)
@@ -22,3 +22,10 @@ class ExpenseAdmin(admin.ModelAdmin):
     list_display = ["category", "amount", "owner", "created_at"]
     ordering = ["category", "amount", "created_at"]
     search_fields = ["category", "owner"]
+
+
+@admin.register(Currency)
+class CurrencyAdmin(admin.ModelAdmin):
+    list_display = ["code", "name"]
+    ordering = ["code"]
+    search_fields = ["code", "name"]
