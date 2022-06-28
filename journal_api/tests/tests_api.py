@@ -114,18 +114,4 @@ class ExpenseTests(APITestCase):
         )
         self.assertEqual(response.data["short_description"], "too much water")
 
-    def test_get_total_expense_without_query(self):
-        url = reverse("expense-total-expenses")
-        user = User.objects.get(username="dale77")
-        self.client.force_authenticate(user)
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data["expenses"]), 3)
 
-    def test_get_total_expense_with_query(self):
-        url = reverse("expense-total-expenses") + "?currency=USD"
-        user = User.objects.get(username="dale77")
-        self.client.force_authenticate(user)
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["total_expenses"], Decimal("4985.00"))
