@@ -99,7 +99,7 @@ class AppLoader:
                 self.create_user()
                 for _ in range(100):
                     self.add_expense()
-                for _ in range(5):
+                for _ in range(10):
                     self.add_new_category()
                 for _ in range(10):
                     self.get_to_expenses()
