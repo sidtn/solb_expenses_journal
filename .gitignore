@@ -7,3 +7,5 @@ __pycache__
 solb_expenses_journal/__pycache__
 db_data
 load_script/users.txt
+.tox
+solb_expenses_journal.egg-info
