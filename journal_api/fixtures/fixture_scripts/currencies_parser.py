@@ -1,11 +1,15 @@
 import json
+import os
 
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def get_currencies():
     url = "https://api.apilayer.com/currency_data/list"
-    headers = {"apikey": ""}
+    headers = {"apikey": os.getenv("API_KEY_CURRENCY")}
     response = requests.request("GET", url, headers=headers)
     result = response.json()["currencies"]
     currencies_list = []

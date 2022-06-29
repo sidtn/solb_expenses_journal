@@ -62,3 +62,6 @@ class TotalExpensesSerializer(serializers.Serializer):
     currency = serializers.PrimaryKeyRelatedField(
         required=False, queryset=Currency.objects.all()
     )
+    convertto = serializers.PrimaryKeyRelatedField(
+        required=False, queryset=Currency.objects.all()
+    )
