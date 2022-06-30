@@ -6,7 +6,7 @@ from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from journal_api.core.lock_tables import lock_table
+from journal_api.core.utils import lock_table
 from journal_api.core.validators import validate_positive
 
 
