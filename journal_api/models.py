@@ -6,6 +6,7 @@ from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
+from journal_api.core.lock_tables import lock_table
 from journal_api.core.validators import validate_positive
 
 
@@ -52,15 +53,18 @@ class Category(MPTTModel):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            last_id = Category.objects.all().aggregate(
-                largest=models.Max("id")
-            )["largest"]
-            if last_id is not None:
-                self.id = last_id + 1
-            else:
-                self.id = 1
+            with lock_table(Category):
+                last_id = Category.objects.all().aggregate(
+                    largest=models.Max("id")
+                )["largest"]
+                if last_id is not None:
+                    self.id = last_id + 1
+                else:
+                    self.id = 1
 
-        super(Category, self).save(*args, **kwargs)
+                super(Category, self).save(*args, **kwargs)
+        else:
+            super(Category, self).save(*args, **kwargs)
 
     class Meta:
         unique_together = ("owner", "name")
