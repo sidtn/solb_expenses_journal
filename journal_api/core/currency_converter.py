@@ -11,7 +11,7 @@ class BadResponseFromCurrencyAPI(Exception):
 class CurrencyRatesCache:
 
     """
-    Takes positional arguments in timedelta format.
+    Takes named arguments in timedelta format.
     example: minutes=1, seconds=10
     """
 
