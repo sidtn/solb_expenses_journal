@@ -4,7 +4,6 @@ from django.db import transaction
 from django.db.transaction import get_connection
 
 
-@staticmethod
 @contextmanager
 def lock_table(model):
     with transaction.atomic():
