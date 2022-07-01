@@ -44,8 +44,8 @@ def get_total_expenses(request):
             to_currency = convert_to
             try:
                 convert_result = currency_converter(
-                    currency, to_currency, total_expenses["sum"]
-                )
+                    currency, to_currency
+                ) * total_expenses["sum"]
                 report[f"sum in {to_currency}"] = round(convert_result, 2)
             except BadResponseFromCurrencyAPI:
                 report[
@@ -88,8 +88,8 @@ def get_total_expenses(request):
                 amount = exp.get("total_expenses")
                 if amount:
                     convert_result = currency_converter(
-                        from_currency, to_currency, amount
-                    )
+                        from_currency, to_currency
+                    ) * amount
                 else:
                     convert_result = 0
                 amount_in_another_currency += convert_result
