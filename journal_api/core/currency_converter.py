@@ -22,13 +22,17 @@ class CurrencyRatesCache:
 
     def get_rates(self, from_currency, to_currency):
         cached_rate = self.cache.get(f"{from_currency} - {to_currency}")
-        if cached_rate and datetime.datetime.now() - cached_rate.get("created") < datetime.timedelta(
-                seconds=self._storage_time):
+        if cached_rate and datetime.datetime.now() - cached_rate.get(
+            "created"
+        ) < datetime.timedelta(seconds=self._storage_time):
             rate = cached_rate.get("rate")
             return rate
         else:
             rate = self._func(from_currency, to_currency)
-            self.cache[f"{from_currency} - {to_currency}"] = {"rate": rate, "created": datetime.datetime.now()}
+            self.cache[f"{from_currency} - {to_currency}"] = {
+                "rate": rate,
+                "created": datetime.datetime.now(),
+            }
             return rate
 
     def __call__(self, *args):
