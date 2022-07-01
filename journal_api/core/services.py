@@ -1,7 +1,4 @@
 import datetime
-
-from django.db.models import Sum
-
 from journal_api.core.currency_converter import (
     BadResponseFromCurrencyAPI,
     currency_converter,
@@ -9,97 +6,70 @@ from journal_api.core.currency_converter import (
 from journal_api.models import Expense
 
 
-def get_total_expenses(request):
-    user = request.user
-    category = request.query_params.get("category")
-    start_date = request.query_params.get("start_date")
-    end_date = request.query_params.get("end_date")
-    currency = request.query_params.get("currency")
-    convert_to = request.query_params.get("convertto")
-    if not start_date:
-        start_date = datetime.datetime(2020, 1, 1)
-    if not end_date:
-        end_date = datetime.datetime.now()
-    params_dict = {
-        "created_at__range": [start_date, end_date],
-    }
-    if category:
-        params_dict["category"] = category
-    if currency:
-        params_dict["currency"] = currency
-        total_expenses = (
-            Expense.objects.filter(owner__id=user.id, **params_dict)
-            .values("amount")
-            .aggregate(sum=Sum("amount"))
-        )
-        report = {
-            "start_date": start_date,
-            "end_date": end_date,
-            "currency": currency,
-            "total_expenses": total_expenses["sum"],
+class TotalExpenses:
+
+    def __init__(self, request):
+        self.user = request.user
+        self.category = request.query_params.get("category")
+        self.start_date = request.query_params.get("start_date")
+        self.end_date = request.query_params.get("end_date")
+        self.currency = request.query_params.get("currency")
+
+    def get_filter_dict(self):
+        if not self.start_date:
+            self.start_date = datetime.datetime(2020, 1, 1)
+        if not self.end_date:
+            self.end_date = datetime.datetime.now()
+        filter_dict = {
+            "created_at__range": [self.start_date, self.end_date],
         }
-        if category:
-            report["category"] = category
-        if convert_to and total_expenses["sum"]:
-            to_currency = convert_to
+        if self.category:
+            filter_dict["category"] = self.category
+        else:
+            self.category = "all"
+
+        return filter_dict
+
+    def create_exp_dict(self, expense):
+        exp_dict = {
+            "date": expense.created_at,
+            "category_uuid": expense.category.uuid,
+            "category_name": expense.category.name,
+            expense.currency.code: expense.amount,
+        }
+        if self.currency:
             try:
-                convert_result = (
-                    currency_converter(currency, to_currency)
-                    * total_expenses["sum"]
-                )
-                report[f"sum in {to_currency}"] = round(convert_result, 2)
+                in_request_currency = round(currency_converter(expense.currency.code, self.currency) * expense.amount, 2)
             except BadResponseFromCurrencyAPI:
-                report[
-                    f"sum in {to_currency}"
-                ] = "conversion is not available now"
+                in_request_currency = None
+            exp_dict[f"in_{self.currency}"] = in_request_currency
+        exp_dict["children"] = []
+        return exp_dict
+
+    def get_report(self):
+        expenses = (
+            Expense.objects.filter(owner__id=self.user.id, **self.get_filter_dict())
+        ).order_by("category__level")
+        report = {
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "category": self.category,
+            "expenses": []
+        }
+        for exp in expenses:
+            exp_dict = self.create_exp_dict(exp)
+            report["expenses"].append(exp_dict)
+            for i in expenses:
+                if i.category in exp.category.get_children():
+                    d = self.create_exp_dict(i)
+                    exp_dict["children"].append(d)
+
         return report
 
-    expenses = []
-    user_expenses_currencies = (
-        Expense.objects.filter(owner__id=user.id).values("currency").distinct()
-    )
-    for currency in user_expenses_currencies:
-        total = (
-            Expense.objects.filter(
-                owner__id=user.id, **params_dict, currency=currency["currency"]
-            )
-            .values("amount")
-            .aggregate(sum=Sum("amount"))
-        )
-        if total["sum"]:
-            expenses.append(
-                {
-                    "currency": currency["currency"],
-                    "total_expenses": total["sum"],
-                }
-            )
-    report_by_currency = {
-        "start_date": start_date,
-        "end_date": end_date,
-        "expenses": expenses,
-    }
-    if category:
-        report_by_currency["category"] = category
-    if convert_to:
-        to_currency = convert_to
-        try:
-            amount_in_another_currency = 0
-            for exp in expenses:
-                from_currency = exp.get("currency")
-                amount = exp.get("total_expenses")
-                if amount:
-                    convert_result = (
-                        currency_converter(from_currency, to_currency) * amount
-                    )
-                else:
-                    convert_result = 0
-                amount_in_another_currency += convert_result
-            report_by_currency[f"sum in {to_currency}"] = round(
-                amount_in_another_currency, 2
-            )
-        except BadResponseFromCurrencyAPI:
-            report_by_currency[
-                f"sum in {to_currency}"
-            ] = "conversion is not available now"
 
-    return report_by_currency
+
+
+
+
+
+
