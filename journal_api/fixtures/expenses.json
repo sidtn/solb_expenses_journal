@@ -1,0 +1,132 @@
+[
+{
+    "model": "journal_api.expense",
+    "pk": 1,
+    "fields": {
+        "owner": 2,
+        "amount": "1000.00",
+        "category": "d618421a-232b-428c-8a6d-d1f12a734153",
+        "currency": "AED",
+        "short_description": "",
+        "created_at": "2022-07-02T13:37:17.642",
+        "updated_at": "2022-07-03T17:58:34.355"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 2,
+    "fields": {
+        "owner": 2,
+        "amount": "1000.00",
+        "category": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
+        "currency": "AFN",
+        "short_description": "",
+        "created_at": "2022-07-02T13:37:32.959",
+        "updated_at": "2022-07-03T17:57:57.168"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 3,
+    "fields": {
+        "owner": 2,
+        "amount": "1000.00",
+        "category": "5e637589-1dd2-4491-844e-9f48d474692c",
+        "currency": "USD",
+        "short_description": "",
+        "created_at": "2022-07-02T13:38:17.958",
+        "updated_at": "2022-07-03T17:58:07.668"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 4,
+    "fields": {
+        "owner": 2,
+        "amount": "1547.25",
+        "category": "5e637589-1dd2-4491-844e-9f48d474692c",
+        "currency": "SZL",
+        "short_description": "",
+        "created_at": "2022-07-02T13:38:28.580",
+        "updated_at": "2022-07-03T17:58:13.418"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 5,
+    "fields": {
+        "owner": 2,
+        "amount": "142.00",
+        "category": "ad8613cc-9a42-46a0-a7fb-8fd0791fbea5",
+        "currency": "TTD",
+        "short_description": "",
+        "created_at": "2022-07-02T13:38:42.179",
+        "updated_at": "2022-07-03T17:58:21.302"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 6,
+    "fields": {
+        "owner": 2,
+        "amount": "1000.00",
+        "category": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+        "currency": "XOF",
+        "short_description": "",
+        "created_at": "2022-07-02T13:38:55.893",
+        "updated_at": "2022-07-03T17:58:16.760"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 7,
+    "fields": {
+        "owner": 2,
+        "amount": "700.00",
+        "category": "d618421a-232b-428c-8a6d-d1f12a734153",
+        "currency": "GMD",
+        "short_description": "",
+        "created_at": "2022-07-03T12:57:00.792",
+        "updated_at": "2022-07-03T17:58:30.250"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 8,
+    "fields": {
+        "owner": 2,
+        "amount": "1400.00",
+        "category": "e42e7010-d609-4cb6-9360-571490bf7fa8",
+        "currency": "TND",
+        "short_description": "",
+        "created_at": "2022-07-03T17:35:56.515",
+        "updated_at": "2022-07-03T17:58:39.908"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 9,
+    "fields": {
+        "owner": 2,
+        "amount": "1200.00",
+        "category": "f5c0ffcb-4d76-4283-b6de-a06349a91033",
+        "currency": "UYU",
+        "short_description": "",
+        "created_at": "2022-07-03T17:40:26.739",
+        "updated_at": "2022-07-03T17:58:45.026"
+    }
+},
+{
+    "model": "journal_api.expense",
+    "pk": 10,
+    "fields": {
+        "owner": 2,
+        "amount": "7845.00",
+        "category": "be45c7c8-a8a8-408b-a7e9-7b2806a93251",
+        "currency": "XDR",
+        "short_description": "",
+        "created_at": "2022-07-03T17:40:58.099",
+        "updated_at": "2022-07-03T17:58:25.934"
+    }
+}
+]

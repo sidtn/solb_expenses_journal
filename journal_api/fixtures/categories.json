@@ -1,0 +1,716 @@
+[
+{
+    "model": "journal_api.category",
+    "pk": "03035046-b756-48ae-80ae-bbae865e8891",
+    "fields": {
+        "owner": null,
+        "name": "Trash service",
+        "parent": null,
+        "id": 2,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 41,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "082cff46-235e-447b-b674-1ed9c0c778d0",
+    "fields": {
+        "owner": null,
+        "name": "Kids’ Sports",
+        "parent": null,
+        "id": 38,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 26,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "09c022b4-8846-4de6-8eea-c42ff997ce03",
+    "fields": {
+        "owner": null,
+        "name": "Credit card fee",
+        "parent": null,
+        "id": 31,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 12,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "0e3ade37-58d7-43c2-b52b-77a7a662c9c9",
+    "fields": {
+        "owner": null,
+        "name": "Gaming",
+        "parent": null,
+        "id": 20,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 16,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "100233e1-3b43-4421-840f-561f2719afdf",
+    "fields": {
+        "owner": null,
+        "name": "Education",
+        "parent": null,
+        "id": 19,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 14,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "134302b5-f3e5-47c4-95e6-e7c4129c6cf4",
+    "fields": {
+        "owner": 2,
+        "name": "Diesel",
+        "parent": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
+        "id": 46,
+        "lft": 3,
+        "rght": 4,
+        "tree_id": 1,
+        "level": 2
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "17add1a5-a9ca-4269-8d12-63a6da2fdd8c",
+    "fields": {
+        "owner": 2,
+        "name": "AI-95",
+        "parent": "e42e7010-d609-4cb6-9360-571490bf7fa8",
+        "id": 48,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 1,
+        "level": 3
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "1be8bf3d-392a-46c9-b2c7-79a28c4470d5",
+    "fields": {
+        "owner": null,
+        "name": "Weddings",
+        "parent": null,
+        "id": 41,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 45,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "1edaac4b-9e86-4e69-910e-1d84a2a6a0d4",
+    "fields": {
+        "owner": null,
+        "name": "Computer/phone replacement",
+        "parent": null,
+        "id": 14,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 11,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "206c1084-b116-4b03-9b03-e501d98222e2",
+    "fields": {
+        "owner": null,
+        "name": "Kids’ Activities",
+        "parent": null,
+        "id": 37,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 25,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "2479c6f2-523b-4f6b-a93c-eb22767e138d",
+    "fields": {
+        "owner": null,
+        "name": "Phone bill",
+        "parent": null,
+        "id": 28,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 33,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "2f74be53-4638-4cea-88d2-5613e4620cec",
+    "fields": {
+        "owner": null,
+        "name": "Water bill",
+        "parent": null,
+        "id": 1,
+        "lft": 1,
+        "rght": 10,
+        "tree_id": 44,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "2fcae27a-60f2-412c-b741-fe7d97816866",
+    "fields": {
+        "owner": null,
+        "name": "School fees",
+        "parent": null,
+        "id": 39,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 37,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "320984f3-cd47-4bcc-9d3e-3b7efd868b79",
+    "fields": {
+        "owner": null,
+        "name": "Car insurance",
+        "parent": null,
+        "id": 7,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 5,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "3222d6dd-d66c-4dc4-be95-f7f4a5d309dd",
+    "fields": {
+        "owner": null,
+        "name": "Christmas",
+        "parent": null,
+        "id": 21,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 9,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "39cefc7c-91b4-43a1-915b-d31c5f8a008b",
+    "fields": {
+        "owner": null,
+        "name": "Pet care",
+        "parent": null,
+        "id": 35,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 32,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "3a820f53-b5cb-4472-803b-abec6b2ae169",
+    "fields": {
+        "owner": null,
+        "name": "Life insurance",
+        "parent": null,
+        "id": 29,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 28,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "3b53d4ac-aaf5-4a2f-8ebe-5ef79e351314",
+    "fields": {
+        "owner": null,
+        "name": "Vacation",
+        "parent": null,
+        "id": 17,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 42,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "4b4edb8b-a86d-45b7-88d1-d78b1247b3ae",
+    "fields": {
+        "owner": null,
+        "name": "Hosting",
+        "parent": null,
+        "id": 23,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 22,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "4e9629c9-da40-4143-a0e5-136350bead50",
+    "fields": {
+        "owner": null,
+        "name": "Lawn care",
+        "parent": null,
+        "id": 43,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 27,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
+    "fields": {
+        "owner": 2,
+        "name": "Fuel",
+        "parent": "d618421a-232b-428c-8a6d-d1f12a734153",
+        "id": 45,
+        "lft": 2,
+        "rght": 11,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "57202558-e9e3-470b-85e4-8ee4088eba57",
+    "fields": {
+        "owner": null,
+        "name": "Other Holidays",
+        "parent": null,
+        "id": 22,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 31,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "5e637589-1dd2-4491-844e-9f48d474692c",
+    "fields": {
+        "owner": 2,
+        "name": "AI-98",
+        "parent": "e42e7010-d609-4cb6-9360-571490bf7fa8",
+        "id": 49,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 1,
+        "level": 3
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "68913d4a-f021-4ed9-9058-8b9f02b0bb83",
+    "fields": {
+        "owner": null,
+        "name": "Car registration",
+        "parent": null,
+        "id": 6,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 6,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "6caf02fc-07fc-45a1-bdb4-188c8acae43c",
+    "fields": {
+        "owner": null,
+        "name": "House decor",
+        "parent": null,
+        "id": 32,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 23,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "71b97e39-ce63-4ccc-b5c4-b050bff19c27",
+    "fields": {
+        "owner": null,
+        "name": "Gifts",
+        "parent": null,
+        "id": 12,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 18,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "7b9fee68-1ea7-403e-b51e-22c0a703656c",
+    "fields": {
+        "owner": null,
+        "name": "Warehouse membership",
+        "parent": null,
+        "id": 30,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 43,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "829dec6e-4088-4ecf-b069-afa517fb8d73",
+    "fields": {
+        "owner": null,
+        "name": "Clothing",
+        "parent": null,
+        "id": 11,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 10,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+    "fields": {
+        "owner": null,
+        "name": "Movies",
+        "parent": null,
+        "id": 27,
+        "lft": 1,
+        "rght": 6,
+        "tree_id": 30,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "8db4d79a-0845-4b36-8576-d07a0b7938bb",
+    "fields": {
+        "owner": null,
+        "name": "Property taxes",
+        "parent": null,
+        "id": 26,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 35,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "9e16a532-8b71-46e5-b522-3d4eb84fd2b8",
+    "fields": {
+        "owner": null,
+        "name": "Entertainment subscriptions",
+        "parent": null,
+        "id": 16,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 15,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "a88aae27-0544-425b-b7a6-2442364b7386",
+    "fields": {
+        "owner": null,
+        "name": "Charitable giving",
+        "parent": null,
+        "id": 13,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 7,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "a9e422d3-74df-4871-9dc4-4ff824f93d3d",
+    "fields": {
+        "owner": null,
+        "name": "Banking",
+        "parent": null,
+        "id": 33,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "ab54ec6e-ecda-4e8a-8bce-b72f97ecfeaa",
+    "fields": {
+        "owner": null,
+        "name": "Health care",
+        "parent": null,
+        "id": 10,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 20,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "ad8613cc-9a42-46a0-a7fb-8fd0791fbea5",
+    "fields": {
+        "owner": 2,
+        "name": "Oil",
+        "parent": "d618421a-232b-428c-8a6d-d1f12a734153",
+        "id": 44,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "b0807fb6-5aad-4b46-b0f9-07f069529f53",
+    "fields": {
+        "owner": null,
+        "name": "Child care",
+        "parent": null,
+        "id": 36,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 8,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "b6d8ea59-1d11-473c-9d36-8376fdcbd3c9",
+    "fields": {
+        "owner": null,
+        "name": "Home maintenance",
+        "parent": null,
+        "id": 8,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 21,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "be45c7c8-a8a8-408b-a7e9-7b2806a93251",
+    "fields": {
+        "owner": 2,
+        "name": "Popcorn",
+        "parent": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+        "id": 55,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 30,
+        "level": 1
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "cb77fd37-224c-4f08-b0a9-3f8b28f500e7",
+    "fields": {
+        "owner": null,
+        "name": "Braces",
+        "parent": null,
+        "id": 40,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 4,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "d3b52f8f-7071-4335-b444-335f50712f79",
+    "fields": {
+        "owner": null,
+        "name": "Renter/home insurance",
+        "parent": null,
+        "id": 9,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 36,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "d618421a-232b-428c-8a6d-d1f12a734153",
+    "fields": {
+        "owner": null,
+        "name": "Auto maintenance",
+        "parent": null,
+        "id": 5,
+        "lft": 1,
+        "rght": 14,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "d984f08f-f8ee-474b-9803-988316b2bee5",
+    "fields": {
+        "owner": null,
+        "name": "Gym membership/fitness",
+        "parent": null,
+        "id": 18,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 19,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "db40adab-92db-4c50-9d09-33f9f94efcd2",
+    "fields": {
+        "owner": null,
+        "name": "Household goods",
+        "parent": null,
+        "id": 34,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 24,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "e263f380-b055-4a1b-8c94-d96bb999a715",
+    "fields": {
+        "owner": null,
+        "name": "Software subscriptions",
+        "parent": null,
+        "id": 15,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 38,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "e31a05e2-07d7-407f-8914-18d07fb6de4e",
+    "fields": {
+        "owner": null,
+        "name": "Beauty",
+        "parent": null,
+        "id": 25,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 3,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "e42e7010-d609-4cb6-9360-571490bf7fa8",
+    "fields": {
+        "owner": 2,
+        "name": "Gasoline",
+        "parent": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
+        "id": 47,
+        "lft": 5,
+        "rght": 10,
+        "tree_id": 1,
+        "level": 2
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "e6c2d57e-31f5-4da9-9b38-3003e70d0942",
+    "fields": {
+        "owner": null,
+        "name": "Gas bill",
+        "parent": null,
+        "id": 3,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 17,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "f170bc05-1bb5-4621-ab02-61dc0f09da9c",
+    "fields": {
+        "owner": null,
+        "name": "Taxes",
+        "parent": null,
+        "id": 42,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 39,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "f5c0ffcb-4d76-4283-b6de-a06349a91033",
+    "fields": {
+        "owner": 2,
+        "name": "Movie tickets",
+        "parent": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+        "id": 54,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 30,
+        "level": 1
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "fa3c6723-0ed3-4c16-aa5f-2e81161d0e21",
+    "fields": {
+        "owner": null,
+        "name": "Transportation costs",
+        "parent": null,
+        "id": 4,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 40,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "fead4184-3780-4e5a-a430-388494ffdb89",
+    "fields": {
+        "owner": null,
+        "name": "Dates",
+        "parent": null,
+        "id": 24,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 13,
+        "level": 0
+    }
+}
+]
