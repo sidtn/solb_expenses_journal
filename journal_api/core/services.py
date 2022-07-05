@@ -70,6 +70,7 @@ class TotalExpenses:
                     )
                 )
                 exp_dict = self.create_exp_dict(exp)
+                cat_amount = 0
                 for f_exp in family_expenses:
                     sub_cat_exp_dict = {
                         "date": f_exp.created_at,
@@ -80,19 +81,26 @@ class TotalExpenses:
                         "short_description": f_exp.short_description,
                         f_exp.currency.code: f_exp.amount,
                     }
+
                     exp_dict["cat_expenses"].append(sub_cat_exp_dict)
                     if self.currency:
                         try:
-                            sub_cat_exp_dict[f"in_{self.currency}"] = round(
+                            convert_to_currency = round(
                                 f_exp.amount
                                 * currency_converter(
                                     f_exp.currency.code, self.currency
                                 ),
                                 2,
                             )
+                            sub_cat_exp_dict[
+                                f"in_{self.currency}"
+                            ] = convert_to_currency
+                            cat_amount += convert_to_currency
                         except BadResponseFromCurrencyAPI:
                             sub_cat_exp_dict[f"in_{self.currency}"] = None
                     showed_cat.append(f_exp.category)
+                if cat_amount:
+                    exp_dict[f"amount_in_{self.currency}"] = cat_amount
                 report["expenses"].append(exp_dict)
 
         return report
