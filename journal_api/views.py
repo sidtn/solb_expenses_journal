@@ -25,6 +25,7 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+    sw_tags = ["Categories"]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -39,6 +40,7 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+    sw_tags = ["Expenses"]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
