@@ -7,10 +7,10 @@
         "name": "Trash service",
         "parent": null,
         "id": 2,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 41,
+        "level": 0
     }
 },
 {
@@ -21,10 +21,10 @@
         "name": "Kids’ Sports",
         "parent": null,
         "id": 38,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 26,
+        "level": 0
     }
 },
 {
@@ -35,10 +35,10 @@
         "name": "Credit card fee",
         "parent": null,
         "id": 31,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 12,
+        "level": 0
     }
 },
 {
@@ -49,10 +49,10 @@
         "name": "Gaming",
         "parent": null,
         "id": 20,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 16,
+        "level": 0
     }
 },
 {
@@ -63,38 +63,38 @@
         "name": "Education",
         "parent": null,
         "id": 19,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 14,
+        "level": 0
     }
 },
 {
     "model": "journal_api.category",
     "pk": "134302b5-f3e5-47c4-95e6-e7c4129c6cf4",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "Diesel",
         "parent": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
         "id": 46,
-        "lft": 4,
-        "rght": 5,
+        "lft": 3,
+        "rght": 4,
         "tree_id": 1,
-        "level": 3
+        "level": 2
     }
 },
 {
     "model": "journal_api.category",
     "pk": "17add1a5-a9ca-4269-8d12-63a6da2fdd8c",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "AI-95",
         "parent": "e42e7010-d609-4cb6-9360-571490bf7fa8",
         "id": 48,
-        "lft": 7,
-        "rght": 8,
+        "lft": 6,
+        "rght": 7,
         "tree_id": 1,
-        "level": 4
+        "level": 3
     }
 },
 {
@@ -105,10 +105,10 @@
         "name": "Weddings",
         "parent": null,
         "id": 41,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 45,
+        "level": 0
     }
 },
 {
@@ -119,10 +119,10 @@
         "name": "Computer/phone replacement",
         "parent": null,
         "id": 14,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 11,
+        "level": 0
     }
 },
 {
@@ -133,10 +133,10 @@
         "name": "Kids’ Activities",
         "parent": null,
         "id": 37,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 25,
+        "level": 0
     }
 },
 {
@@ -147,10 +147,10 @@
         "name": "Phone bill",
         "parent": null,
         "id": 28,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 33,
+        "level": 0
     }
 },
 {
@@ -161,10 +161,10 @@
         "name": "Water bill",
         "parent": null,
         "id": 1,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 10,
+        "tree_id": 44,
+        "level": 0
     }
 },
 {
@@ -175,10 +175,10 @@
         "name": "School fees",
         "parent": null,
         "id": 39,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 37,
+        "level": 0
     }
 },
 {
@@ -189,10 +189,10 @@
         "name": "Car insurance",
         "parent": null,
         "id": 7,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 5,
+        "level": 0
     }
 },
 {
@@ -203,10 +203,10 @@
         "name": "Christmas",
         "parent": null,
         "id": 21,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 9,
+        "level": 0
     }
 },
 {
@@ -217,10 +217,10 @@
         "name": "Pet care",
         "parent": null,
         "id": 35,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 32,
+        "level": 0
     }
 },
 {
@@ -231,10 +231,10 @@
         "name": "Life insurance",
         "parent": null,
         "id": 29,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 28,
+        "level": 0
     }
 },
 {
@@ -245,10 +245,10 @@
         "name": "Vacation",
         "parent": null,
         "id": 17,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 42,
+        "level": 0
     }
 },
 {
@@ -259,10 +259,10 @@
         "name": "Hosting",
         "parent": null,
         "id": 23,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 22,
+        "level": 0
     }
 },
 {
@@ -273,24 +273,24 @@
         "name": "Lawn care",
         "parent": null,
         "id": 43,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 27,
+        "level": 0
     }
 },
 {
     "model": "journal_api.category",
     "pk": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "Fuel",
         "parent": "d618421a-232b-428c-8a6d-d1f12a734153",
         "id": 45,
-        "lft": 3,
-        "rght": 12,
+        "lft": 2,
+        "rght": 11,
         "tree_id": 1,
-        "level": 2
+        "level": 1
     }
 },
 {
@@ -301,24 +301,24 @@
         "name": "Other Holidays",
         "parent": null,
         "id": 22,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 31,
+        "level": 0
     }
 },
 {
     "model": "journal_api.category",
     "pk": "5e637589-1dd2-4491-844e-9f48d474692c",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "AI-98",
         "parent": "e42e7010-d609-4cb6-9360-571490bf7fa8",
         "id": 49,
-        "lft": 9,
-        "rght": 10,
+        "lft": 8,
+        "rght": 9,
         "tree_id": 1,
-        "level": 4
+        "level": 3
     }
 },
 {
@@ -329,24 +329,10 @@
         "name": "Car registration",
         "parent": null,
         "id": 6,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
-    }
-},
-{
-    "model": "journal_api.category",
-    "pk": "6c741508-4de7-43f1-b3b3-5c6698c20ede",
-    "fields": {
-        "owner": 1,
-        "name": "lol",
-        "parent": "2f74be53-4638-4cea-88d2-5613e4620cec",
-        "id": 50,
-        "lft": 13,
-        "rght": 14,
-        "tree_id": 1,
-        "level": 2
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 6,
+        "level": 0
     }
 },
 {
@@ -357,10 +343,10 @@
         "name": "House decor",
         "parent": null,
         "id": 32,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 23,
+        "level": 0
     }
 },
 {
@@ -371,10 +357,10 @@
         "name": "Gifts",
         "parent": null,
         "id": 12,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 18,
+        "level": 0
     }
 },
 {
@@ -385,10 +371,10 @@
         "name": "Warehouse membership",
         "parent": null,
         "id": 30,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 43,
+        "level": 0
     }
 },
 {
@@ -399,10 +385,10 @@
         "name": "Clothing",
         "parent": null,
         "id": 11,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 10,
+        "level": 0
     }
 },
 {
@@ -413,24 +399,10 @@
         "name": "Movies",
         "parent": null,
         "id": 27,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
-    }
-},
-{
-    "model": "journal_api.category",
-    "pk": "8af74fb9-7dd3-4789-a901-7f251b696052",
-    "fields": {
-        "owner": 1,
-        "name": "lol1",
-        "parent": "2f74be53-4638-4cea-88d2-5613e4620cec",
-        "id": 51,
-        "lft": 15,
-        "rght": 16,
-        "tree_id": 1,
-        "level": 2
+        "lft": 1,
+        "rght": 6,
+        "tree_id": 30,
+        "level": 0
     }
 },
 {
@@ -441,10 +413,10 @@
         "name": "Property taxes",
         "parent": null,
         "id": 26,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 35,
+        "level": 0
     }
 },
 {
@@ -455,38 +427,10 @@
         "name": "Entertainment subscriptions",
         "parent": null,
         "id": 16,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
-    }
-},
-{
-    "model": "journal_api.category",
-    "pk": "9f6fff54-1754-4131-bafb-351182da6bb8",
-    "fields": {
-        "owner": 1,
-        "name": "lol12",
-        "parent": "2f74be53-4638-4cea-88d2-5613e4620cec",
-        "id": 52,
-        "lft": 17,
-        "rght": 18,
-        "tree_id": 1,
-        "level": 2
-    }
-},
-{
-    "model": "journal_api.category",
-    "pk": "9fd71872-c940-48f4-b054-f1b94d977509",
-    "fields": {
-        "owner": 1,
-        "name": "lol121",
-        "parent": "2f74be53-4638-4cea-88d2-5613e4620cec",
-        "id": 53,
-        "lft": 19,
-        "rght": 20,
-        "tree_id": 1,
-        "level": 2
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 15,
+        "level": 0
     }
 },
 {
@@ -497,10 +441,10 @@
         "name": "Charitable giving",
         "parent": null,
         "id": 13,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 7,
+        "level": 0
     }
 },
 {
@@ -511,10 +455,10 @@
         "name": "Banking",
         "parent": null,
         "id": 33,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
     }
 },
 {
@@ -525,24 +469,24 @@
         "name": "Health care",
         "parent": null,
         "id": 10,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 20,
+        "level": 0
     }
 },
 {
     "model": "journal_api.category",
     "pk": "ad8613cc-9a42-46a0-a7fb-8fd0791fbea5",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "Oil",
         "parent": "d618421a-232b-428c-8a6d-d1f12a734153",
         "id": 44,
-        "lft": 1,
-        "rght": 2,
+        "lft": 12,
+        "rght": 13,
         "tree_id": 1,
-        "level": 2
+        "level": 1
     }
 },
 {
@@ -553,10 +497,10 @@
         "name": "Child care",
         "parent": null,
         "id": 36,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 8,
+        "level": 0
     }
 },
 {
@@ -567,9 +511,23 @@
         "name": "Home maintenance",
         "parent": null,
         "id": 8,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 21,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "be45c7c8-a8a8-408b-a7e9-7b2806a93251",
+    "fields": {
+        "owner": 2,
+        "name": "Popcorn",
+        "parent": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+        "id": 55,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 30,
         "level": 1
     }
 },
@@ -581,10 +539,10 @@
         "name": "Braces",
         "parent": null,
         "id": 40,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 4,
+        "level": 0
     }
 },
 {
@@ -595,10 +553,10 @@
         "name": "Renter/home insurance",
         "parent": null,
         "id": 9,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 36,
+        "level": 0
     }
 },
 {
@@ -609,10 +567,10 @@
         "name": "Auto maintenance",
         "parent": null,
         "id": 5,
-        "lft": 21,
-        "rght": 21,
+        "lft": 1,
+        "rght": 14,
         "tree_id": 1,
-        "level": 1
+        "level": 0
     }
 },
 {
@@ -623,10 +581,10 @@
         "name": "Gym membership/fitness",
         "parent": null,
         "id": 18,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 19,
+        "level": 0
     }
 },
 {
@@ -637,10 +595,10 @@
         "name": "Household goods",
         "parent": null,
         "id": 34,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 24,
+        "level": 0
     }
 },
 {
@@ -651,10 +609,10 @@
         "name": "Software subscriptions",
         "parent": null,
         "id": 15,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 38,
+        "level": 0
     }
 },
 {
@@ -665,24 +623,24 @@
         "name": "Beauty",
         "parent": null,
         "id": 25,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 3,
+        "level": 0
     }
 },
 {
     "model": "journal_api.category",
     "pk": "e42e7010-d609-4cb6-9360-571490bf7fa8",
     "fields": {
-        "owner": 1,
+        "owner": 2,
         "name": "Gasoline",
         "parent": "52ca4a0e-5b0c-4451-98c7-e7e0c45997de",
         "id": 47,
-        "lft": 6,
-        "rght": 11,
+        "lft": 5,
+        "rght": 10,
         "tree_id": 1,
-        "level": 3
+        "level": 2
     }
 },
 {
@@ -693,10 +651,10 @@
         "name": "Gas bill",
         "parent": null,
         "id": 3,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 17,
+        "level": 0
     }
 },
 {
@@ -707,9 +665,23 @@
         "name": "Taxes",
         "parent": null,
         "id": 42,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 39,
+        "level": 0
+    }
+},
+{
+    "model": "journal_api.category",
+    "pk": "f5c0ffcb-4d76-4283-b6de-a06349a91033",
+    "fields": {
+        "owner": 2,
+        "name": "Movie tickets",
+        "parent": "85148334-cae5-4c8a-9360-37b3e6a5ea8c",
+        "id": 54,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 30,
         "level": 1
     }
 },
@@ -721,10 +693,10 @@
         "name": "Transportation costs",
         "parent": null,
         "id": 4,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 40,
+        "level": 0
     }
 },
 {
@@ -735,10 +707,10 @@
         "name": "Dates",
         "parent": null,
         "id": 24,
-        "lft": 21,
-        "rght": 21,
-        "tree_id": 1,
-        "level": 1
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 13,
+        "level": 0
     }
 }
 ]

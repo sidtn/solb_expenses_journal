@@ -3,15 +3,15 @@
     "model": "journal_api.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$320000$QnaCplTplRmoAn5CtlCjIK$+nTEmCvQ6IT9B9d3xf3WgFq4MfsQINUIDcSVGG6Sals=",
-        "last_login": null,
+        "password": "pbkdf2_sha256$320000$WA3w50fwcaVN0HDeSNlQAN$N09kmZ5BWqNHp6fPaMC0g26C+o7ZM1nhdOUsHGb3Qm4=",
+        "last_login": "2022-07-02T13:36:34.033",
         "is_superuser": true,
         "username": "root",
         "first_name": "",
         "last_name": "",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2022-06-27T18:55:44.424",
+        "date_joined": "2022-07-02T13:36:17.289",
         "email": "root@mail.com",
         "groups": [],
         "user_permissions": []
@@ -21,142 +21,16 @@
     "model": "journal_api.user",
     "pk": 2,
     "fields": {
-        "password": "pbkdf2_sha256$320000$kEztzNKa34PUGrOeszrNf9$vjxSkIROHVQJ7ERXBUxh/rWTgt1B/5bFDujs4SLrJgQ=",
+        "password": "pbkdf2_sha256$320000$qccdUSsCJc7dhdeqOCd6LH$aVHJ1WfEGSLYUk4EMNfr0HcrU7zsBDAim2jteSD2JwE=",
         "last_login": null,
         "is_superuser": false,
-        "username": "dale77",
+        "username": "testuser",
         "first_name": "",
         "last_name": "",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.162",
-        "email": "martinezbobby@example.net",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 3,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$TyP4hCmhc15xKjjJPlRN1Z$XZ8GWCAJvfQdndwMvD7YFIjxApuSEc3Tgc7wZiGC+OM=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "gibbsteresa",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.164",
-        "email": "jacquelinegibson@example.com",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 4,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$7Z2hbJ1napUY22SW7Bh99t$9euNKCsyvl85Hk9AwquGe5ewFpF5jodr2wRzBrOAp9s=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "bridgesemily",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.161",
-        "email": "kcraig@example.net",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$oZLffhDcR2II8Xu2gtxUWE$gWo3ImcC5FAZpb/AnNqT3bzkywe69Nc3guIwtD6nH54=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "peter85",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.173",
-        "email": "kenneth34@example.org",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 6,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$tOolbYcS75J5XsOxUzgZid$Dr771Vdie/HaYimwXFqQSY8nTjKX+yCYg2kE5mnXWZU=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "kpena",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.163",
-        "email": "holmespaula@example.org",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 7,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$h8ZXzVSNX0F8MItkOxeiDU$mbXyZUSAqq7kqxiuASphq2OJzR49/YYz82GeNsw89Jw=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "autumnbaker",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.166",
-        "email": "bhale@example.org",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 8,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$SlLOSQGmJJ5rSWFabreQ3k$LNQt34XnV6Lpxl6mrwwDebhsh46B/BsoNK1sVJPm9q8=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "annaking",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.163",
-        "email": "kellyhicks@example.org",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "journal_api.user",
-    "pk": 9,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$HUS3F4qsoBPJV2kM42fhvW$W+vorfyvI947WlBtRBvaJbOOTdzwhQsSGQhMoSfMJ+k=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "philliporr",
-        "first_name": "",
-        "last_name": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2022-06-27T18:56:11.163",
-        "email": "scottmeyers@example.net",
+        "date_joined": "2022-07-03T17:57:38.918",
+        "email": "testuser@mail.com",
         "groups": [],
         "user_permissions": []
     }

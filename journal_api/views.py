@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
-from journal_api.core.services import get_total_expenses
+from journal_api.core.services import TotalExpenses
 from journal_api.models import Category, Expense
 from journal_api.serializers import (
     CategorySerializer,
@@ -74,5 +74,5 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
     def total_expenses(self, request):
         qp = TotalExpensesSerializer(data=request.query_params)
         qp.is_valid(raise_exception=True)
-        total_expenses = get_total_expenses(self.request)
+        total_expenses = TotalExpenses(self.request).get_report()
         return Response(total_expenses, status=status.HTTP_200_OK)
