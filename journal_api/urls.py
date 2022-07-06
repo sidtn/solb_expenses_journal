@@ -1,4 +1,4 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 from rest_framework import routers
 
 from journal_api.views import CategoryAPIViewSet, ExpenseAPIViewSet
