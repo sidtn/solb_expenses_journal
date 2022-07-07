@@ -1,15 +1,13 @@
 from django.db.models import Q
-from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework import filters
 from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
 from journal_api.core.services import TotalExpenses
-from journal_api.filters import CategoryFilter
 from journal_api.models import Category, Expense
 from journal_api.serializers import (
     CategorySerializer,
@@ -29,9 +27,8 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
     sw_tags = ["Categories"]
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = CategoryFilter
-    filterset_fields = ["name"]
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["name"]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
