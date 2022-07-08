@@ -1,4 +1,6 @@
 from django.db.models import Q
+from django_filters.rest_framework import DjangoFilterBackend
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
@@ -6,7 +8,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from journal_api.core.custom_permissions import IsOwnerOrAdminOrReadOnly
+from journal_api.core.response_examples import (
+    response_total_expenses_schema_dict,
+)
 from journal_api.core.services import TotalExpenses
+from journal_api.filters import CategoryFilter, ExpenseFilter
 from journal_api.models import Category, Expense
 from journal_api.serializers import (
     CategorySerializer,
@@ -26,6 +32,8 @@ class CategoryAPIViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
     sw_tags = ["Categories"]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = CategoryFilter
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -41,6 +49,8 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseSerializer
     permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
     sw_tags = ["Expenses"]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ExpenseFilter
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -72,7 +82,14 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
 
-    @action(url_path="total", methods=["GET"], detail=False)
+    @swagger_auto_schema(
+        query_serializer=TotalExpensesSerializer,
+        operation_id="Get total expenses endpoint",
+        responses=response_total_expenses_schema_dict,
+    )
+    @action(
+        url_path="total", methods=["GET"], detail=False, filterset_class=None
+    )
     def total_expenses(self, request):
         qp = TotalExpensesSerializer(data=request.query_params)
         qp.is_valid(raise_exception=True)
