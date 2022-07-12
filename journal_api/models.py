@@ -99,3 +99,29 @@ class Expense(models.Model):
 
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
+
+
+class Limit(models.Model):
+    owner = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="limit"
+    )
+    limit_per_week = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators=[validate_positive],
+        null=True,
+    )
+    limit_per_month = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators=[validate_positive],
+        null=True,
+    )
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.CASCADE,
+        default=Currency.objects.get(code="USD").pk,
+    )
+
+    def __str__(self):
+        return f"{self.owner} limit"

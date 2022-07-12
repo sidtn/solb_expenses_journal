@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status, viewsets
+from rest_framework import generics, mixins, status, views, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -13,10 +13,11 @@ from journal_api.core.response_examples import (
 )
 from journal_api.core.services import TotalExpenses
 from journal_api.filters import CategoryFilter, ExpenseFilter
-from journal_api.models import Category, Expense
+from journal_api.models import Category, Expense, Limit
 from journal_api.serializers import (
     CategorySerializer,
     ExpenseSerializer,
+    LimitSerializer,
     TotalExpensesSerializer,
     UserSerializer,
 )
@@ -95,3 +96,22 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
         qp.is_valid(raise_exception=True)
         total_expenses = TotalExpenses(self.request).get_report()
         return Response(total_expenses, status=status.HTTP_200_OK)
+
+
+class LimitAPIView(generics.GenericAPIView, mixins.UpdateModelMixin):
+    queryset = Limit.objects.all()
+    serializer_class = LimitSerializer
+    permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        user = self.request.user
+        instance = Limit.objects.get(owner=user)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    def put(self, request, *args, **kwargs):
+        instance = Limit.objects.get(owner=self.request.user)
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)

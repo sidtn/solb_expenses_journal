@@ -62,6 +62,7 @@ class TotalExpenses:
             "expenses": [],
         }
         showed_cat = []
+        expenses_amount = 0
         for exp in expenses:
             if exp.category not in showed_cat:
                 family_expenses = expenses.filter(
@@ -96,11 +97,24 @@ class TotalExpenses:
                                 f"in_{self.currency}"
                             ] = convert_to_currency
                             cat_amount += convert_to_currency
+                            expenses_amount += convert_to_currency
                         except BadResponseFromCurrencyAPI:
                             sub_cat_exp_dict[f"in_{self.currency}"] = None
                     showed_cat.append(f_exp.category)
                 if cat_amount:
                     exp_dict[f"amount_in_{self.currency}"] = cat_amount
                 report["expenses"].append(exp_dict)
+        if expenses_amount > 0:
+            report[self.currency] = expenses_amount
 
         return report
+
+
+class TotalExpensesForEmail(TotalExpenses):
+
+    def __init__(self, user, currency, start_date=None, end_date=None):
+        self.user = user
+        self.start_date = start_date
+        self.end_date = end_date
+        self.currency = currency
+        self.category = None

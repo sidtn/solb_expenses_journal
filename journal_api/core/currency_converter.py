@@ -42,7 +42,7 @@ class CurrencyRatesCache:
         return self.get_rates(*args)
 
 
-@CurrencyRatesCache(storage_time=60)
+@CurrencyRatesCache(storage_time=600)
 def currency_converter(from_currency, to_currency):
     url = f"https://api.exchangerate.host/convert?from={from_currency}&to={to_currency}"
     response = requests.get(url)

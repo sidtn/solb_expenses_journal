@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
-from journal_api.models import Category, Currency, Expense, User
+from journal_api.models import Category, Currency, Expense, Limit, User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -62,3 +62,11 @@ class TotalExpensesSerializer(serializers.Serializer):
     currency = serializers.PrimaryKeyRelatedField(
         required=False, queryset=Currency.objects.all()
     )
+
+
+class LimitSerializer(serializers.ModelSerializer):
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Limit
+        fields = ["owner", "limit_per_week", "limit_per_month", "currency"]

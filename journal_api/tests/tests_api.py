@@ -2,12 +2,12 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from journal_api.models import Category, Currency, User
+from journal_api.models import Category, Currency, Limit, User
 
 
 class UserTests(APITestCase):
 
-    fixtures = ["users.json"]
+    fixtures = ["users.json", "currencies.json"]
 
     def test_create_user_without_email(self):
         url = reverse("register")
@@ -28,6 +28,9 @@ class UserTests(APITestCase):
         self.assertEqual(
             User.objects.get(email="test@email.com").email, "test@email.com"
         )
+        self.assertIsNotNone(
+            Limit.objects.filter(owner__email="test@email.com")
+        )
 
     def test_login_user(self):
         user = User.objects.get(username="testuser")
@@ -40,7 +43,7 @@ class UserTests(APITestCase):
 
 class CategoryTests(APITestCase):
 
-    fixtures = ["users.json"]
+    fixtures = ["users.json", "currencies.json"]
 
     def setUp(self):
         user = User.objects.get(username="testuser")
@@ -96,3 +99,31 @@ class ExpenseTests(APITestCase):
             response.data["category"], Category.objects.first().pk
         )
         self.assertEqual(response.data["short_description"], "too much water")
+
+
+class LimitTest(APITestCase):
+
+    fixtures = ["users.json", "currencies.json"]
+
+    def setUp(self):
+        user = User.objects.get(username="testuser")
+        self.client.force_authenticate(user)
+
+    def test_get_to_limits(self):
+        url = reverse("limits")
+        response = self.client.get(url).json()
+        self.assertEqual(response["currency"], "USD")
+        self.assertEqual(response["limit_per_week"], None)
+
+    def test_put_to_limits(self):
+        url = reverse("limits")
+        data = {
+            "currency": "BYN",
+            "limit_per_week": 1000,
+            "limit_per_month": 4000,
+        }
+        response = self.client.put(url, data, format="json").json()
+        print(response)
+        self.assertEqual(response["limit_per_week"], "1000.00")
+        self.assertEqual(response["limit_per_month"], "4000.00")
+        self.assertEqual(response["currency"], "BYN")
