@@ -24,11 +24,11 @@ def send_mail_if_over_limit(sender, instance, created, **kwargs):
     month_expenses = TotalExpensesForEmail(
         user=user, currency=currency, start_date=month_start
     ).get_report()[currency]
-    if month_expenses > limit_per_month:
+    if limit_per_month and month_expenses > limit_per_month:
         topic = "[Expense journal] Pay attention! Exceeding the monthly spending limit."
         message = f"Your monthly spending limit is {limit_per_month} {currency}. You spent {month_expenses} {currency}."
         send_notification_to_email(user_email, topic, message)
-    elif month_expenses > limit_per_month * Decimal("0.8"):
+    elif limit_per_month and month_expenses > limit_per_month * Decimal("0.8"):
         topic = "[Expense journal] You have spent more than 80% of the monthly limit."
         message = f"Your monthly spending limit is {limit_per_month} {currency}. You spent {month_expenses} {currency}."
         send_notification_to_email(user_email, topic, message)
@@ -36,11 +36,13 @@ def send_mail_if_over_limit(sender, instance, created, **kwargs):
         week_expenses = TotalExpensesForEmail(
             user=user, currency=currency, start_date=week_start
         ).get_report()[currency]
-        if week_expenses > limit_per_week:
+        if limit_per_week and week_expenses > limit_per_week:
             topic = "[Expense journal] Pay attention! Exceeding the weekly spending limit."
             message = f"Your weekly spending limit is {limit_per_week} {currency}. You spent {week_expenses} {currency}."
             send_notification_to_email(user_email, topic, message)
-        elif week_expenses > limit_per_week * Decimal("0.8"):
+        elif limit_per_week and week_expenses > limit_per_week * Decimal(
+            "0.8"
+        ):
             topic = "[Expense journal] You have spent more than 80% of the weekly limit."
             message = f"Your weekly spending limit is {limit_per_week} {currency}. You spent {week_expenses} {currency}."
             send_notification_to_email(user_email, topic, message)
