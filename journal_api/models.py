@@ -120,7 +120,7 @@ class Limit(models.Model):
     currency = models.ForeignKey(
         Currency,
         on_delete=models.CASCADE,
-        default=Currency.objects.get(code="USD").pk,
+        default="USD",
     )
 
     def __str__(self):
