@@ -111,7 +111,6 @@ class TotalExpenses:
 
 
 class TotalExpensesForEmail(TotalExpenses):
-
     def __init__(self, user, currency, start_date=None, end_date=None):
         self.user = user
         self.start_date = start_date
