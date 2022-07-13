@@ -2,6 +2,7 @@ import uuid as uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -99,3 +100,31 @@ class Expense(models.Model):
 
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
+
+
+class Limit(models.Model):
+    class LimitType(models.TextChoices):
+        WEEK = "W", _("Week")
+        MONTH = "M", _("Month")
+        CUSTOM = "C", _("Custom")
+
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="limits"
+    )
+    type = models.CharField(
+        max_length=50, choices=LimitType.choices, default=LimitType.MONTH
+    )
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, validators=[validate_positive]
+    )
+    currency = models.ForeignKey(
+        Currency, on_delete=models.CASCADE, default="USD"
+    )
+    custom_start_date = models.DateField(default=timezone.now)
+    custom_end_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.owner} {self.type} limit"
+
+    class Meta:
+        unique_together = ("owner", "type")

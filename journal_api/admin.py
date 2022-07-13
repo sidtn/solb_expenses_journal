@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from journal_api.models import Category, Currency, Expense, User
+from journal_api.models import Category, Currency, Expense, Limit, User
 
 
 @admin.register(User)
@@ -29,3 +29,17 @@ class CurrencyAdmin(admin.ModelAdmin):
     list_display = ["code", "name"]
     ordering = ["code"]
     search_fields = ["code", "name"]
+
+
+@admin.register(Limit)
+class LimitAdmin(admin.ModelAdmin):
+    list_display = [
+        "owner",
+        "type",
+        "amount",
+        "currency",
+        "custom_start_date",
+        "custom_end_date",
+    ]
+    ordering = ["owner"]
+    search_fields = ["owner"]
