@@ -1,10 +1,10 @@
+import datetime
 import uuid as uuid
 from decimal import Decimal
 
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -129,8 +129,8 @@ class Limit(models.Model):
     currency = models.ForeignKey(
         Currency, on_delete=models.CASCADE, default="USD"
     )
-    custom_start_date = models.DateField(default=timezone.now)
-    custom_end_date = models.DateField(default=timezone.now)
+    custom_start_date = models.DateField(default=datetime.date.today)
+    custom_end_date = models.DateField(default=datetime.date.today)
     notification_percent = models.DecimalField(
         max_digits=3,
         decimal_places=0,
