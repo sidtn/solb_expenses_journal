@@ -1,12 +1,17 @@
 import uuid as uuid
+from decimal import Decimal
 
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
+from journal_api.core.notification_sender import (
+    limit_exceeding_email_sender,
+)
 from journal_api.core.utils import lock_table
 from journal_api.core.validators import validate_positive
 
@@ -98,6 +103,10 @@ class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        limit_exceeding_email_sender(self)
+        return super(Expense, self).save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
 
@@ -122,6 +131,12 @@ class Limit(models.Model):
     )
     custom_start_date = models.DateField(default=timezone.now)
     custom_end_date = models.DateField(default=timezone.now)
+    notification_percent = models.DecimalField(
+        max_digits=3,
+        decimal_places=0,
+        default=Decimal(80),
+        validators=[MinValueValidator(50), MaxValueValidator(100)],
+    )
 
     def __str__(self):
         return f"{self.owner} {self.type} limit"

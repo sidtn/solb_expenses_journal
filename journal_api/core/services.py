@@ -104,3 +104,12 @@ class TotalExpenses:
                 report["expenses"].append(exp_dict)
 
         return report
+
+
+class TotalExpensesForEmail(TotalExpenses):
+    def __init__(self, user, currency, start_date=None, end_date=None):
+        self.user = user
+        self.start_date = start_date
+        self.end_date = end_date
+        self.currency = currency
+        self.category = None
