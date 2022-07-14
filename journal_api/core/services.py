@@ -104,15 +104,7 @@ class TotalExpenses:
                 if cat_amount:
                     exp_dict[f"amount_in_{self.currency}"] = cat_amount
                 report["expenses"].append(exp_dict)
-        report[self.currency] = expenses_amount
+        if expenses_amount:
+            report[self.currency] = expenses_amount
 
         return report
-
-
-class TotalExpensesForEmail(TotalExpenses):
-    def __init__(self, user, currency, start_date=None, end_date=None):
-        self.user = user
-        self.start_date = start_date
-        self.end_date = end_date
-        self.currency = currency
-        self.category = None

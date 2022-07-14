@@ -2,6 +2,7 @@ import datetime
 from decimal import Decimal
 
 import requests
+from django.conf import settings
 
 
 class BadResponseFromCurrencyAPI(Exception):
@@ -42,7 +43,7 @@ class CurrencyRatesCache:
         return self.get_rates(*args)
 
 
-@CurrencyRatesCache(storage_time=60)
+@CurrencyRatesCache(storage_time=settings.CURRENCY_CACHE_LIFETIME)
 def currency_converter(from_currency, to_currency):
     url = f"https://api.exchangerate.host/convert?from={from_currency}&to={to_currency}"
     response = requests.get(url)

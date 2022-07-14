@@ -1,3 +1,5 @@
+import datetime
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -96,3 +98,39 @@ class ExpenseTests(APITestCase):
             response.data["category"], Category.objects.first().pk
         )
         self.assertEqual(response.data["short_description"], "too much water")
+
+
+class LimitTests(APITestCase):
+
+    fixtures = ["users.json", "currencies.json"]
+
+    def setUp(self):
+        user = User.objects.get(username="testuser")
+        self.client.force_authenticate(user)
+
+    def test_create_limit(self):
+        url = reverse("limit-list")
+        data = {
+            "type": "M",
+            "amount": 500,
+            "currency": "USD",
+            "notification_percent": 85,
+        }
+        response = self.client.post(url, data, format="json").json()
+        self.assertEqual(response["type"], "M")
+        self.assertEqual(response["amount"], "500.00")
+        self.assertEqual(response["notification_percent"], "85")
+
+    def test_create_with_wrong_date(self):
+        url = reverse("limit-list")
+        data = {
+            "type": "C",
+            "amount": 500,
+            "currency": "USD",
+            "notification_percent": 85,
+            "custom_start_date": datetime.date.today(),
+            "custom_end_date": datetime.date.today()
+            - datetime.timedelta(days=5),
+        }
+        response = self.client.post(url, data, format="json")
+        self.assertEqual(response.status_code, 400)

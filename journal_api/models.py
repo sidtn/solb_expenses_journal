@@ -3,17 +3,17 @@ import uuid as uuid
 from decimal import Decimal
 
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from journal_api.core.notification_sender import (
-    limit_exceeding_email_sender,
-)
+from journal_api.core.limits_checker import limits_checker
 from journal_api.core.utils import lock_table
 from journal_api.core.validators import validate_positive
+from journal_api.tasks import send_notification_to_email
 
 
 class User(AbstractUser):
@@ -104,8 +104,9 @@ class Expense(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        limit_exceeding_email_sender(self)
-        return super(Expense, self).save(*args, **kwargs)
+        super(Expense, self).save(*args, **kwargs)
+        if limits_checker(self):
+            send_notification_to_email.delay(limits_checker(self))
 
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
