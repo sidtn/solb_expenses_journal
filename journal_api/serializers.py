@@ -73,7 +73,16 @@ class LimitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Limit
-        fields = "__all__"
+        fields = [
+            "id",
+            "owner",
+            "type",
+            "amount",
+            "currency",
+            "notification_percent",
+            "custom_start_date",
+            "custom_end_date",
+        ]
 
     def validate(self, attrs):
         if attrs.get("custom_start_date") and attrs.get("custom_end_date"):
