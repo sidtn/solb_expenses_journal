@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from journal_api.models import Category, Currency, Expense, Limit, User
+from journal_api.models import (
+    Category,
+    Currency,
+    Expense,
+    Limit,
+    NotificationOfExceeding,
+    User,
+)
 
 
 @admin.register(User)
@@ -43,3 +50,9 @@ class LimitAdmin(admin.ModelAdmin):
     ]
     ordering = ["owner"]
     search_fields = ["owner"]
+
+
+@admin.register(NotificationOfExceeding)
+class ExcessNotificationAdmin(admin.ModelAdmin):
+    list_display = ["limit", "exceeding", "is_sent"]
+    ordering = ["is_sent"]

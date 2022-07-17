@@ -3,17 +3,14 @@ import uuid as uuid
 from decimal import Decimal
 
 from django.contrib.auth.models import AbstractUser
-from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from journal_api.core.limits_checker import limits_checker
 from journal_api.core.utils import lock_table
 from journal_api.core.validators import validate_positive
-from journal_api.tasks import send_notification_to_email
 
 
 class User(AbstractUser):
@@ -103,11 +100,6 @@ class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        super(Expense, self).save(*args, **kwargs)
-        if limits_checker(self):
-            send_notification_to_email.delay(limits_checker(self))
-
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
 
@@ -144,3 +136,16 @@ class Limit(models.Model):
 
     class Meta:
         unique_together = ("owner", "type")
+
+
+class NotificationOfExceeding(models.Model):
+    limit = models.ForeignKey(Limit, on_delete=models.CASCADE)
+    exceeding = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_sent = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.limit} - {self.exceeding} notification"
+
+    class Meta:
+        unique_together = ["limit", "exceeding"]

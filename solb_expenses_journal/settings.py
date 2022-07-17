@@ -2,6 +2,7 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "mptt",
     "django_filters",
+    "django_celery_beat",
     "journal_api.apps.JournalApiConfig",
 ]
 
@@ -193,6 +195,20 @@ CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+
+# beat
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "record_notification_to_base": {
+        "task": "journal_api.tasks.record_notification_to_base",
+        "schedule": crontab(minute="*/1"),
+    },
+    "send_notification_to_email": {
+        "task": "journal_api.tasks.send_notification_to_email",
+        "schedule": crontab(minute="*/2"),
+    },
+}
 
 
 # currency cache settings
