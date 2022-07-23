@@ -1,7 +1,10 @@
+import datetime
+
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from rest_framework_recursive.fields import RecursiveField
 
-from journal_api.models import Category, Currency, Expense, User
+from journal_api.models import Category, Currency, Expense, Limit, User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -62,3 +65,35 @@ class TotalExpensesSerializer(serializers.Serializer):
     currency = serializers.PrimaryKeyRelatedField(
         required=False, queryset=Currency.objects.all()
     )
+
+
+class LimitSerializer(serializers.ModelSerializer):
+
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Limit
+        fields = [
+            "id",
+            "owner",
+            "type",
+            "amount",
+            "currency",
+            "notification_percent",
+            "custom_start_date",
+            "custom_end_date",
+        ]
+
+    def validate(self, attrs):
+        if attrs.get("custom_start_date") and attrs.get("custom_end_date"):
+            if attrs.get("custom_start_date") > attrs.get("custom_end_date"):
+                raise ValidationError(
+                    detail={
+                        "date_error": "the start date of the period cannot be later than the end date"
+                    }
+                )
+            if attrs.get("custom_end_date") < datetime.date.today():
+                raise ValidationError(
+                    detail={"date_error": "the end date cannot be in the past"}
+                )
+        return attrs

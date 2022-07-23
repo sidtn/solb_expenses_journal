@@ -13,10 +13,11 @@ from journal_api.core.response_examples import (
 )
 from journal_api.core.services import TotalExpenses
 from journal_api.filters import CategoryFilter, ExpenseFilter
-from journal_api.models import Category, Expense
+from journal_api.models import Category, Expense, Limit
 from journal_api.serializers import (
     CategorySerializer,
     ExpenseSerializer,
+    LimitSerializer,
     TotalExpensesSerializer,
     UserSerializer,
 )
@@ -95,3 +96,17 @@ class ExpenseAPIViewSet(viewsets.ModelViewSet):
         qp.is_valid(raise_exception=True)
         total_expenses = TotalExpenses(self.request).get_report()
         return Response(total_expenses, status=status.HTTP_200_OK)
+
+
+class LimitAPIViewSet(viewsets.ModelViewSet):
+    queryset = Limit.objects.all()
+    serializer_class = LimitSerializer
+    permission_classes = [IsOwnerOrAdminOrReadOnly, IsAuthenticated]
+
+    def get_queryset(self):
+        if self.request.user.is_superuser:
+            return Limit.objects.all()
+        elif self.request.user.is_authenticated:
+            user = self.request.user
+            return Limit.objects.filter(owner=user)
+        return Limit.objects.all()

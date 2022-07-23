@@ -1,6 +1,9 @@
+import datetime
 import uuid as uuid
+from decimal import Decimal
 
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 from mptt.fields import TreeForeignKey
@@ -99,3 +102,50 @@ class Expense(models.Model):
 
     def __str__(self):
         return f"{self.owner} - {self.amount} - {self.category}"
+
+
+class Limit(models.Model):
+    class LimitType(models.TextChoices):
+        WEEK = "W", _("Week")
+        MONTH = "M", _("Month")
+        CUSTOM = "C", _("Custom")
+
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="limits"
+    )
+    type = models.CharField(
+        max_length=50, choices=LimitType.choices, default=LimitType.MONTH
+    )
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, validators=[validate_positive]
+    )
+    currency = models.ForeignKey(
+        Currency, on_delete=models.CASCADE, default="USD"
+    )
+    custom_start_date = models.DateField(default=datetime.date.today)
+    custom_end_date = models.DateField(default=datetime.date.today)
+    notification_percent = models.DecimalField(
+        max_digits=3,
+        decimal_places=0,
+        default=Decimal(80),
+        validators=[MinValueValidator(50), MaxValueValidator(100)],
+    )
+
+    def __str__(self):
+        return f"{self.owner} {self.type} limit"
+
+    class Meta:
+        unique_together = ("owner", "type")
+
+
+class NotificationOfExceeding(models.Model):
+    limit = models.ForeignKey(Limit, on_delete=models.CASCADE)
+    exceeding = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_sent = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.limit} - {self.exceeding} notification"
+
+    class Meta:
+        unique_together = ["limit", "exceeding"]

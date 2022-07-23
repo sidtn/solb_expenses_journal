@@ -2,6 +2,7 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "mptt",
     "django_filters",
+    "django_celery_beat",
     "journal_api.apps.JournalApiConfig",
 ]
 
@@ -175,3 +177,39 @@ SWAGGER_SETTINGS = {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
     },
 }
+
+
+# email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
+
+
+# celery
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
+
+# beat
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "record_notification_to_base": {
+        "task": "journal_api.tasks.record_notification_to_base",
+        "schedule": crontab(minute="*/1"),
+    },
+    "send_notification_to_email": {
+        "task": "journal_api.tasks.send_notification_to_email",
+        "schedule": crontab(minute="*/2"),
+    },
+}
+
+
+# currency cache settings
+CURRENCY_CACHE_LIFETIME = 600
