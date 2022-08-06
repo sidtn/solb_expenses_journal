@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    - id: check-yaml
+    - id: requirements-txt-fixer
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: 'v5.8.0'
+    hooks:
+      - id: isort
+        exclude: ^.*\b(migrations)\b.*$
+        args: [ "--profile", "black", --line-length=72]
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+    - id: black
+      exclude: ^.*\b(migrations)\b.*$
+      args: [ --config=./pyproject.toml ]

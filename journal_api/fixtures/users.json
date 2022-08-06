@@ -1,0 +1,38 @@
+[
+{
+    "model": "journal_api.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$WA3w50fwcaVN0HDeSNlQAN$N09kmZ5BWqNHp6fPaMC0g26C+o7ZM1nhdOUsHGb3Qm4=",
+        "last_login": "2022-07-02T13:36:34.033",
+        "is_superuser": true,
+        "username": "root",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-07-02T13:36:17.289",
+        "email": "root@mail.com",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "journal_api.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$qccdUSsCJc7dhdeqOCd6LH$aVHJ1WfEGSLYUk4EMNfr0HcrU7zsBDAim2jteSD2JwE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "testuser",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-07-03T17:57:38.918",
+        "email": "testuser@mail.com",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
